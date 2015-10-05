@@ -4,26 +4,41 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Android加载数据库数据 | zebragg的学习博客</title>
+    <title>Java图形编程-Label内容显示不全的问题 | zebragg的学习博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="zebragg">
     
 
     
-    <meta name="description" content="这段时间由于身体状况不是很好，已经有一段时间没有接触代码了，等调理一段时间之后再把这篇文章补上
-动机之前做过一个项目，使用的是本地数据库，其中比较头疼的部分就是对数据的处理，各种情况下的增删改查，如果遇到一些比较复杂的界面，如何高效加载数据确实是一个很麻烦的问题。之后就是各种查资料，终于把这一块弄明白了。回头看自己在学的过程中也是很痛苦的，原因之一就是网上资料比较散（尤其是百度出来的资料），感觉很">
+    <meta name="description" content="今天遇到这么一个很有意思的问题，感觉有必要记录下来，方便以后学习，由于代码不是很复杂，我们就直接截图来分析说明
+
+黄色部分是一个Label，点击确定按钮之后，Label显示上面4个输入框中的内容，可以看到Label并没有把全部的内容显示出来，
+当我们调整窗体的大小之后，Label就显示正常了。
+   这是什么原因造成的呢？初步猜想，应该是初始化时系统的Label的大小设定，默认为Label内容大小">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android加载数据库数据">
-<meta property="og:url" content="https://zebragg.github.io/2015/10/02/Android加载数据库数据/index.html">
+<meta property="og:title" content="Java图形编程-Label内容显示不全的问题">
+<meta property="og:url" content="https://zebragg.github.io/2015/10/05/Java图形编程-Label内容显示不全的问题/index.html">
 <meta property="og:site_name" content="zebragg的学习博客">
-<meta property="og:description" content="这段时间由于身体状况不是很好，已经有一段时间没有接触代码了，等调理一段时间之后再把这篇文章补上
-动机之前做过一个项目，使用的是本地数据库，其中比较头疼的部分就是对数据的处理，各种情况下的增删改查，如果遇到一些比较复杂的界面，如何高效加载数据确实是一个很麻烦的问题。之后就是各种查资料，终于把这一块弄明白了。回头看自己在学的过程中也是很痛苦的，原因之一就是网上资料比较散（尤其是百度出来的资料），感觉很">
-<meta property="og:updated_time" content="2015-10-04T16:21:41.775Z">
+<meta property="og:description" content="今天遇到这么一个很有意思的问题，感觉有必要记录下来，方便以后学习，由于代码不是很复杂，我们就直接截图来分析说明
+
+黄色部分是一个Label，点击确定按钮之后，Label显示上面4个输入框中的内容，可以看到Label并没有把全部的内容显示出来，
+当我们调整窗体的大小之后，Label就显示正常了。
+   这是什么原因造成的呢？初步猜想，应该是初始化时系统的Label的大小设定，默认为Label内容大小">
+<meta property="og:image" content="http://i.imgur.com/V1BU7uJ.png">
+<meta property="og:image" content="http://i.imgur.com/UaKj9ih.png">
+<meta property="og:image" content="http://i.imgur.com/SFzidCR.png">
+<meta property="og:image" content="http://i.imgur.com/B16NEoV.png">
+<meta property="og:image" content="http://i.imgur.com/KHA89tV.png">
+<meta property="og:image" content="http://i.imgur.com/advCrNQ.png">
+<meta property="og:updated_time" content="2015-10-05T01:27:54.791Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android加载数据库数据">
-<meta name="twitter:description" content="这段时间由于身体状况不是很好，已经有一段时间没有接触代码了，等调理一段时间之后再把这篇文章补上
-动机之前做过一个项目，使用的是本地数据库，其中比较头疼的部分就是对数据的处理，各种情况下的增删改查，如果遇到一些比较复杂的界面，如何高效加载数据确实是一个很麻烦的问题。之后就是各种查资料，终于把这一块弄明白了。回头看自己在学的过程中也是很痛苦的，原因之一就是网上资料比较散（尤其是百度出来的资料），感觉很">
+<meta name="twitter:title" content="Java图形编程-Label内容显示不全的问题">
+<meta name="twitter:description" content="今天遇到这么一个很有意思的问题，感觉有必要记录下来，方便以后学习，由于代码不是很复杂，我们就直接截图来分析说明
+
+黄色部分是一个Label，点击确定按钮之后，Label显示上面4个输入框中的内容，可以看到Label并没有把全部的内容显示出来，
+当我们调整窗体的大小之后，Label就显示正常了。
+   这是什么原因造成的呢？初步猜想，应该是初始化时系统的Label的大小设定，默认为Label内容大小">
 
     
     <link rel="alternative" href="/atom.xml" title="zebragg的学习博客" type="application/atom+xml">
@@ -74,30 +89,35 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/02/Android加载数据库数据/" title="Android加载数据库数据" itemprop="url">Android加载数据库数据</a>
+      <a href="/2015/10/05/Java图形编程-Label内容显示不全的问题/" title="Java图形编程-Label内容显示不全的问题" itemprop="url">Java图形编程-Label内容显示不全的问题</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="zebragg" target="_blank" itemprop="author">zebragg</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-02T04:07:23.000Z" itemprop="datePublished"> 发表于 2015-10-02</time>
+    <time datetime="2015-10-05T01:07:58.000Z" itemprop="datePublished"> 发表于 2015-10-05</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<hr>
-<p><strong>这段时间由于身体状况不是很好，<br>已经有一段时间没有接触代码了，等调理一段时间之后再把这篇文章补上</strong></p>
-<h2 id="动机">动机</h2><p>之前做过一个项目，使用的是本地数据库，其中比较头疼的部分就是对数据的处理，各种情况下的增删改查，如果遇到一些比较复杂的界面，如何高效加载数据确实是一个很麻烦的问题。之后就是各种查资料，终于把这一块弄明白了。回头看自己在学的过程中也是很痛苦的，原因之一就是网上资料比较散（尤其是百度出来的资料），感觉很有必要总结一下，当然了如果能够帮助到任何人人，那自然是最好不过了。</p>
-<p><strong>本文会以一个记事本的实例主要从以下方面来展开分析</strong></p>
-<ul>
-<li>使用SQL语句直接操作数据库</li>
-<li>使用ContentProvider</li>
-<li>使用Loader机制</li>
-<li>使用常见框架</li>
-<li>同步与异步</li>
-</ul>
+		<p>  今天遇到这么一个很有意思的问题，感觉有必要记录下来，方便以后学习，由于代码不是很复杂，我们就直接截图来分析说明</p>
+<p><img src="http://i.imgur.com/V1BU7uJ.png" alt=""></p>
+<p>黄色部分是一个Label，点击确定按钮之后，Label显示上面4个输入框中的内容，可以看到Label并没有把全部的内容显示出来，</p>
+<p>当我们调整窗体的大小之后，Label就显示正常了。<br><img src="http://i.imgur.com/UaKj9ih.png" alt=""></p>
+<p>   这是什么原因造成的呢？初步猜想，应该是初始化时系统的Label的大小设定，默认为Label内容大小，也就是说，Label里面内容多大，绘制的时候就多大，因为我们默认Label为空，所以系统初始化大小的时候为默认大小，也就是图1中看到的那样。而改变窗体大小之后，系统要重新计算各控件的大小来绘制窗体，这时候控件的大小就是根据控件里面的内容来设定了，也就是图2中看到的那样。</p>
+<p>我们通过对源码来分析上面的猜想是否正确</p>
+<p>这是 Label 的 setText()方法</p>
+<p><img src="http://i.imgur.com/SFzidCR.png" alt=""></p>
+<p>继续走这个方法， 我们在 Component类中发现了这个方法</p>
+<p><img src="http://i.imgur.com/B16NEoV.png" alt=""></p>
+<p>通过查阅 api，我们就找到了这3个方法</p>
+<p><img src="http://i.imgur.com/KHA89tV.png" alt=""></p>
+<p>看到这3个方法，瞬间就豁然开朗了，也证明了之前猜想是基本正确的，也就是说，如果我们要指定 组件 的初始大小，需要设置的方法是 </p>
+<p>setPreferredSize(Dimension preferredSize) 这个方法，而不是我们自认为的 setSize()…</p>
+<p>改正代码之后的效果，这个时候 Label 就达到我们想要的效果了</p>
+<p><img src="http://i.imgur.com/advCrNQ.png" alt=""></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -105,13 +125,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Android/">Android</a>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Android/">Android</a>
+  <span></span> <a href="/tags/Java/">Java</a>
   </div>
 
 </div>
@@ -120,7 +140,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://zebragg.github.io/2015/10/02/Android加载数据库数据/" data-title="Android加载数据库数据 | zebragg的学习博客" data-tsina="2184410543" class="share clearfix">
+	  <div data-url="https://zebragg.github.io/2015/10/05/Java图形编程-Label内容显示不全的问题/" data-title="Java图形编程-Label内容显示不全的问题 | zebragg的学习博客" data-tsina="2184410543" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -133,20 +153,20 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/02/Hexo搭建个人博客/" title="Hexo搭建个人博客">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Hexo搭建个人博客</span>
+
+<div class="next">
+<a href="/2015/10/02/Hexo搭建个人博客/"  title="Hexo搭建个人博客">
+ <strong>下一篇：</strong><br/> 
+ <span>Hexo搭建个人博客
+</span>
 </a>
 </div>
-
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/02/Android加载数据库数据/" data-title="Android加载数据库数据" data-url="https://zebragg.github.io/2015/10/02/Android加载数据库数据/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/05/Java图形编程-Label内容显示不全的问题/" data-title="Java图形编程-Label内容显示不全的问题" data-url="https://zebragg.github.io/2015/10/05/Java图形编程-Label内容显示不全的问题/"></div>
 </section>
 
 
@@ -156,7 +176,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#动机"><span class="toc-number">1.</span> <span class="toc-text">动机</span></a></li></ol>
+ 
  
   </div>
 
