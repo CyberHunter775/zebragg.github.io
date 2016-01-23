@@ -4,29 +4,33 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hexo搭建个人博客 | zebragg的学习博客</title>
+    <title>使用Eclipse编译Web项目遇到的一个奇葩问题 | zebragg的学习博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="zebragg">
     
 
     
-    <meta name="description" content="动机学习Android也有一段时间了，由于刚开始没有记录的习惯，一些在学习过程中遇到的很有意思的问题往往当时下了大力气去解决，但过一段时间再回头看代码，总是感觉生疏了很多，还得从新开始。这就产生了一个很严重的问题，学习进度太慢了。
-这也是打算开始写博客的最主要的原因，把自己平时遇到的一些问题记录下来，毕竟知识重在积累！
-难吗?我是折腾了整整一天才把这个流程大概弄明白的，那么有同学就可能就要问了，是">
+    <meta name="description" content="起因最近在项目中遇到这样一个问题，百思不得其解，最后在公司领导的帮助下才发现问题，找到问题后，领导更是惊讶，搞了这么多年开发还从未见过这种类型的问题，当然这个问题也困扰了我很久，有必要记录下来，供其它同学参考交流
+问题描述遇到的问题是这样的，考了同事的一份Web项目，方便下班后在家测试，结果奇葩就出来了，无论我怎么修改项目都无法连接到本地的数据库上，每次都连接到了公司内部的服务器上，我是在Ecli">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo搭建个人博客">
-<meta property="og:url" content="https://zebragg.github.io/2015/10/02/Hexo搭建个人博客/index.html">
+<meta property="og:title" content="使用Eclipse编译Web项目遇到的一个奇葩问题">
+<meta property="og:url" content="https://zebragg.github.io/2016/01/23/使用Eclipse编译Web项目遇到的一个奇葩问题/index.html">
 <meta property="og:site_name" content="zebragg的学习博客">
-<meta property="og:description" content="动机学习Android也有一段时间了，由于刚开始没有记录的习惯，一些在学习过程中遇到的很有意思的问题往往当时下了大力气去解决，但过一段时间再回头看代码，总是感觉生疏了很多，还得从新开始。这就产生了一个很严重的问题，学习进度太慢了。
-这也是打算开始写博客的最主要的原因，把自己平时遇到的一些问题记录下来，毕竟知识重在积累！
-难吗?我是折腾了整整一天才把这个流程大概弄明白的，那么有同学就可能就要问了，是">
-<meta property="og:updated_time" content="2015-10-02T16:50:40.073Z">
+<meta property="og:description" content="起因最近在项目中遇到这样一个问题，百思不得其解，最后在公司领导的帮助下才发现问题，找到问题后，领导更是惊讶，搞了这么多年开发还从未见过这种类型的问题，当然这个问题也困扰了我很久，有必要记录下来，供其它同学参考交流
+问题描述遇到的问题是这样的，考了同事的一份Web项目，方便下班后在家测试，结果奇葩就出来了，无论我怎么修改项目都无法连接到本地的数据库上，每次都连接到了公司内部的服务器上，我是在Ecli">
+<meta property="og:image" content="http://7xolhl.com1.z0.glb.clouddn.com/01.png">
+<meta property="og:image" content="http://7xolhl.com1.z0.glb.clouddn.com/02.png">
+<meta property="og:image" content="http://7xolhl.com1.z0.glb.clouddn.com/03.png">
+<meta property="og:image" content="http://7xolhl.com1.z0.glb.clouddn.com/04.png">
+<meta property="og:image" content="http://7xolhl.com1.z0.glb.clouddn.com/05.png">
+<meta property="og:image" content="http://7xolhl.com1.z0.glb.clouddn.com/06.png">
+<meta property="og:image" content="http://7xolhl.com1.z0.glb.clouddn.com/07.png">
+<meta property="og:updated_time" content="2016-01-23T15:06:15.553Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo搭建个人博客">
-<meta name="twitter:description" content="动机学习Android也有一段时间了，由于刚开始没有记录的习惯，一些在学习过程中遇到的很有意思的问题往往当时下了大力气去解决，但过一段时间再回头看代码，总是感觉生疏了很多，还得从新开始。这就产生了一个很严重的问题，学习进度太慢了。
-这也是打算开始写博客的最主要的原因，把自己平时遇到的一些问题记录下来，毕竟知识重在积累！
-难吗?我是折腾了整整一天才把这个流程大概弄明白的，那么有同学就可能就要问了，是">
+<meta name="twitter:title" content="使用Eclipse编译Web项目遇到的一个奇葩问题">
+<meta name="twitter:description" content="起因最近在项目中遇到这样一个问题，百思不得其解，最后在公司领导的帮助下才发现问题，找到问题后，领导更是惊讶，搞了这么多年开发还从未见过这种类型的问题，当然这个问题也困扰了我很久，有必要记录下来，供其它同学参考交流
+问题描述遇到的问题是这样的，考了同事的一份Web项目，方便下班后在家测试，结果奇葩就出来了，无论我怎么修改项目都无法连接到本地的数据库上，每次都连接到了公司内部的服务器上，我是在Ecli">
 
     
     <link rel="alternative" href="/atom.xml" title="zebragg的学习博客" type="application/atom+xml">
@@ -77,66 +81,55 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/02/Hexo搭建个人博客/" title="Hexo搭建个人博客" itemprop="url">Hexo搭建个人博客</a>
+      <a href="/2016/01/23/使用Eclipse编译Web项目遇到的一个奇葩问题/" title="使用Eclipse编译Web项目遇到的一个奇葩问题" itemprop="url">使用Eclipse编译Web项目遇到的一个奇葩问题</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="zebragg" target="_blank" itemprop="author">zebragg</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-02T15:17:02.000Z" itemprop="datePublished"> 发表于 2015-10-02</time>
+    <time datetime="2016-01-23T13:50:40.000Z" itemprop="datePublished"> 发表于 2016-01-23</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h3 id="动机">动机</h3><p>学习Android也有一段时间了，由于刚开始没有记录的习惯，一些在学习过程中遇到的很有意思的问题往往当时下了大力气去解决，但过一段时间再回头看代码，总是感觉生疏了很多，还得从新开始。这就产生了一个很严重的问题，学习进度太慢了。</p>
-<p>这也是打算开始写博客的最主要的原因，把自己平时遇到的一些问题记录下来，毕竟知识重在积累！</p>
-<h3 id="难吗?">难吗?</h3><p>我是折腾了整整一天才把这个流程大概弄明白的，那么有同学就可能就要问了，是不是很复杂啊？我想说，如果找对了方法，其实搭建一个免费的个人博客是很简单的，真的很简单。不信你往下看….</p>
-<p>准备干活之后，你肯定要去百度找找’ 如何搭建免费的个人博客 ‘，之类的关键字，不过可惜的是，搜到的很多质量都不是很高，看了之后，也仅仅是大脑中多了几个新概念，对于解决你如何搭建博客的问题，事实上并没有什么卵用，折腾了一上午然并卵之后，我选择了放弃，用我大Google了一把，瞬间找到了几篇高质量的博文，然后就可以开始写自己的博文了,haha..</p>
-<h3 id="推荐">推荐</h3><ul>
-<li><a href="http://opiece.me/2015/04/09/hexo-guide/" target="_blank" rel="external">使用Hexo搭建个人博客(基于hexo3.0)</a></li>
-<li><a href="http://www.cnblogs.com/zhcncn/p/4097881.html" target="_blank" rel="external">Hexo搭建Github静态博客</a></li>
-<li><a href="http://wuchong.me/jacman/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">博客主题-Jacman的使用</a></li>
-</ul>
-<h3 id="总结">总结</h3><p>具体怎么搭，好多博文里面写的要比我好多了，就不画蛇添足了，免得误导其他人，自己在这里就做一个大概的总结流程就足够了。</p>
-<ul>
-<li>准备<ul>
-<li>node.js</li>
-<li>Git</li>
-<li>GitHub账号</li>
-</ul>
-</li>
-<li>流程<ul>
-<li>安装 node.js</li>
-<li>安装 Git</li>
-<li>使用 Git 在指定的路径下安装 Hexo<ul>
-<li>npm install -g hexo (可能需要翻墙)</li>
-<li>hexo init</li>
-<li>hexo install</li>
-<li>hexo generate/g</li>
-<li>hexo server/s</li>
-</ul>
-</li>
-<li>本地预览 localhost:4000</li>
-<li>将本地博客部署到 Github<ul>
-<li>设置 SSH</li>
-</ul>
-</li>
-<li>hexo主题配置<ul>
-<li>使用 Git下载主题</li>
-<li>进行配置</li>
-<li>hexo deploy/d 发布博客到 Github</li>
-</ul>
-</li>
-<li>主要注意问题<ul>
-<li>hexo 和 主题配置时 缩进一格</li>
-<li>生成 SSH 时没有必要使用密码，</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+		<h3 id="起因">起因</h3><p>最近在项目中遇到这样一个问题，百思不得其解，最后在公司领导的帮助下才发现问题，找到问题后，领导更是惊讶，搞了这么多年开发还从未见过这种类型的问题，当然这个问题也困扰了我很久，有必要记录下来，供其它同学参考交流</p>
+<h4 id="问题描述">问题描述</h4><p>遇到的问题是这样的，考了同事的一份Web项目，方便下班后在家测试，结果奇葩就出来了，无论我怎么修改项目都无法连接到本地的数据库上，每次都连接到了公司内部的服务器上，我是在Eclipse（4.5.1）下面部署的 Web 项目，项目结构如下：</p>
+<blockquote>
+<p><img src="http://7xolhl.com1.z0.glb.clouddn.com/01.png" alt=""></p>
+</blockquote>
+<p>数据库配置文件</p>
+<blockquote>
+<p><img src="http://7xolhl.com1.z0.glb.clouddn.com/02.png" alt=""></p>
+<p>url：数据库连接地址<br>username：数据库名<br>password：密码（这里是加过密的）</p>
+</blockquote>
+<h4 id="问题重现">问题重现</h4><p>这是我当时从同事手中拿到的完整项目</p>
+<blockquote>
+<p><img src="http://7xolhl.com1.z0.glb.clouddn.com/03.png" alt=""></p>
+</blockquote>
+<p>导入 Eclipse 之后有个红色的感叹号，当时并没有引起我的足够重视，下面开始部署项目</p>
+<blockquote>
+<p><img src="http://7xolhl.com1.z0.glb.clouddn.com/04.png" alt=""></p>
+<p>内网数据库地址，</p>
+</blockquote>
+<p><img src="http://7xolhl.com1.z0.glb.clouddn.com/05.png" alt=""></p>
+<p>可以看到服务器已经开启了，也已经可以正常访问，并没有出现什么问题，但我准备部署到本地连接到本地数据库的时候，问题就出现了，怎么部署都并没有什么卵用，甚至出现了以下这种情况</p>
+<blockquote>
+<p><img src="http://7xolhl.com1.z0.glb.clouddn.com/06.png" alt=""></p>
+</blockquote>
+<p>当我把连接数据库配置文件都注释掉之后，项目依然可以运行，只不过连接到的还是公司内网数据库，这时候我整个人都有点崩溃了，难道说连接数据库的配置不是这里？同事给了我肯定的答复，就是在这里…</p>
+<h4 id="出生原因">出生原因</h4><p>在我产生这个奇葩问题之后，领导也有点好奇，修改数据库密码、清除缓存、把项目移到 MyEclipse中、查看 hosts 配置、重新配置 Tomcat….然而这些努力通通以失败告终，最后项目那个红色感叹号引起了我们的注意，最后我们在项目的工作路径的编译文件下找到了原因，这是在项目编译路径中发现的</p>
+<blockquote>
+<p><img src="http://7xolhl.com1.z0.glb.clouddn.com/07.png" alt=""></p>
+</blockquote>
+<p>通过Eclipse无论对项目中的配置文件怎么修改，都没有对编译之后的文件产生任何影响，也就是说，无论你怎么修改，项目压根就没有被编译过！！！ 因为项目是从同事那里考过来的，同时也把原本已经编译成功的文件也包含在内，在导入 Eclise 之后，因为那个红色感叹号的存在，导致无论怎么修改，都没有被编译，加载的时候还是加载的最初编译之后的文件，这也是项目无法在本地部署的原因，因为数据库地址在编译文件里面就没有被修改过！！！</p>
+<h4 id="解决">解决</h4><p>找到了问题之后，就好处理了，找到引起红色感叹号的原因，发现是因为缺少jar包的原因</p>
+<blockquote>
+<p>引申问题：既然缺少 jar 包，为什么项目在无数次 clean 之后，没有出现红色的 X ，而仅仅是一个感叹号，clean 的作用就是将 .class 文件删除，同时重新编译，但在这个项目中却完全没有起到该起的作用..</p>
+</blockquote>
+<p>在重新导入Jar 包之后，该问题也就被解决了..</p>
+<h4 id="总结">总结</h4><p>在运行别人项目的时候一定要先把 .class 下的东西清空一下，包括提交的服务器上的项目 .class文件不应该上传，要运行的项目一定要调整到没有任何问题为止…..</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -144,13 +137,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/hexo/">hexo</a>
+  <a class="article-category-link" href="/categories/JavaWeb/">JavaWeb</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/hexo/">hexo</a>
+  <span></span> <a href="/tags/JavaWeb/">JavaWeb</a>
   </div>
 
 </div>
@@ -159,7 +152,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://zebragg.github.io/2015/10/02/Hexo搭建个人博客/" data-title="Hexo搭建个人博客 | zebragg的学习博客" data-tsina="2184410543" class="share clearfix">
+	  <div data-url="https://zebragg.github.io/2016/01/23/使用Eclipse编译Web项目遇到的一个奇葩问题/" data-title="使用Eclipse编译Web项目遇到的一个奇葩问题 | zebragg的学习博客" data-tsina="2184410543" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -172,19 +165,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/05/Java图形编程-Label内容显示不全的问题/" title="Java图形编程-Label内容显示不全的问题">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Java图形编程-Label内容显示不全的问题</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/10/02/Android加载数据库数据/"  title="Android加载数据库数据">
+<a href="/2016/01/11/回顾--展望/"  title="回顾--展望">
  <strong>下一篇：</strong><br/> 
- <span>Android加载数据库数据
+ <span>回顾--展望
 </span>
 </a>
 </div>
@@ -193,7 +178,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/02/Hexo搭建个人博客/" data-title="Hexo搭建个人博客" data-url="https://zebragg.github.io/2015/10/02/Hexo搭建个人博客/"></div>
+	<div class="ds-thread" data-thread-key="2016/01/23/使用Eclipse编译Web项目遇到的一个奇葩问题/" data-title="使用Eclipse编译Web项目遇到的一个奇葩问题" data-url="https://zebragg.github.io/2016/01/23/使用Eclipse编译Web项目遇到的一个奇葩问题/"></div>
 </section>
 
 
@@ -203,7 +188,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#动机"><span class="toc-number">1.</span> <span class="toc-text">动机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#难吗?"><span class="toc-number">2.</span> <span class="toc-text">难吗?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推荐"><span class="toc-number">3.</span> <span class="toc-text">推荐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#起因"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题描述"><span class="toc-number">1.1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题重现"><span class="toc-number">1.2.</span> <span class="toc-text">问题重现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#出生原因"><span class="toc-number">1.3.</span> <span class="toc-text">出生原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决"><span class="toc-number">1.4.</span> <span class="toc-text">解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
  
   </div>
 
