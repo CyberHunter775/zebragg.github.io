@@ -4,23 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>基于XMPP协议的聊天小应用 | zebragg的学习博客</title>
+    <title>基于XMPP协议的聊天小应用(一) | zebragg的学习博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="zebragg">
     
 
     
-    <meta name="description" content="动机之前在前公司做过一个基于XMPP协议的聊天功能，最近比较烦躁，新东西不怎么学进去，准备这几天把之前做的东西再复习一下，调整一下状态。">
+    <meta name="description" content="动机之前在前公司做过一个基于XMPP协议的聊天功能，最近比较烦躁，新东西不怎么学进去，准备这几天把之前做的东西再复习一下，调整一下状态。
+当初刚接触 XMPP 的时候也是费了很大的功夫，这次总结打算写一系列有关 Android 聊天功能的文章，一来给自己找找状态，当然如果能够帮助到其他人也算为开源做贡献了。
+本篇文章主要介绍 XMPP 、搭建 Openfire 服务器，搭建 Android 端简单">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于XMPP协议的聊天小应用">
+<meta property="og:title" content="基于XMPP协议的聊天小应用(一)">
 <meta property="og:url" content="https://zebragg.github.io/2016/03/11/基于XMPP协议的聊天小应用/index.html">
 <meta property="og:site_name" content="zebragg的学习博客">
-<meta property="og:description" content="动机之前在前公司做过一个基于XMPP协议的聊天功能，最近比较烦躁，新东西不怎么学进去，准备这几天把之前做的东西再复习一下，调整一下状态。">
-<meta property="og:updated_time" content="2016-03-11T02:33:02.968Z">
+<meta property="og:description" content="动机之前在前公司做过一个基于XMPP协议的聊天功能，最近比较烦躁，新东西不怎么学进去，准备这几天把之前做的东西再复习一下，调整一下状态。
+当初刚接触 XMPP 的时候也是费了很大的功夫，这次总结打算写一系列有关 Android 聊天功能的文章，一来给自己找找状态，当然如果能够帮助到其他人也算为开源做贡献了。
+本篇文章主要介绍 XMPP 、搭建 Openfire 服务器，搭建 Android 端简单">
+<meta property="og:updated_time" content="2016-03-11T11:37:40.117Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于XMPP协议的聊天小应用">
-<meta name="twitter:description" content="动机之前在前公司做过一个基于XMPP协议的聊天功能，最近比较烦躁，新东西不怎么学进去，准备这几天把之前做的东西再复习一下，调整一下状态。">
+<meta name="twitter:title" content="基于XMPP协议的聊天小应用(一)">
+<meta name="twitter:description" content="动机之前在前公司做过一个基于XMPP协议的聊天功能，最近比较烦躁，新东西不怎么学进去，准备这几天把之前做的东西再复习一下，调整一下状态。
+当初刚接触 XMPP 的时候也是费了很大的功夫，这次总结打算写一系列有关 Android 聊天功能的文章，一来给自己找找状态，当然如果能够帮助到其他人也算为开源做贡献了。
+本篇文章主要介绍 XMPP 、搭建 Openfire 服务器，搭建 Android 端简单">
 
     
     <link rel="alternative" href="/atom.xml" title="zebragg的学习博客" type="application/atom+xml">
@@ -70,7 +76,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/11/基于XMPP协议的聊天小应用/" title="基于XMPP协议的聊天小应用" itemprop="url">基于XMPP协议的聊天小应用</a>
+      <a href="/2016/03/11/基于XMPP协议的聊天小应用/" title="基于XMPP协议的聊天小应用(一)" itemprop="url">基于XMPP协议的聊天小应用(一)</a>
   </h1>
   <p class="article-author">By
        
@@ -86,11 +92,26 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#动机"><span class="toc-number">1.</span> <span class="toc-text">动机</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#动机"><span class="toc-number">1.</span> <span class="toc-text">动机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XMPP？"><span class="toc-number">2.</span> <span class="toc-text">XMPP？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#openfire"><span class="toc-number">3.</span> <span class="toc-text">openfire</span></a></li></ol>
 		
 		</div>
 		
 		<h2 id="动机">动机</h2><p>之前在前公司做过一个基于XMPP协议的聊天功能，最近比较烦躁，新东西不怎么学进去，准备这几天把之前做的东西再复习一下，调整一下状态。</p>
+<p>当初刚接触 XMPP 的时候也是费了很大的功夫，这次总结打算写一系列有关 Android 聊天功能的文章，一来给自己找找状态，当然如果能够帮助到其他人也算为开源做贡献了。</p>
+<p><strong>本篇文章主要介绍 XMPP 、搭建 Openfire 服务器，搭建 Android 端简单框架，实现注册、登录的功能</strong></p>
+<h2 id="XMPP？">XMPP？</h2><p>XMPP 是什么？</p>
+<p><a href="http://baike.baidu.com/link?url=xMPVVcNVsmNaIPiCNNls3MrA3uc0rh7Qv0TqkDvu42nrdcDEC3hHXw2kZZXC0upiGfhMNh9ZLhgohRNoOYMKOa" target="_blank" rel="external">XMPP 百度百科</a><br><a href="https://zh.wikipedia.org/wiki/XMPP" target="_blank" rel="external">XMPP 维基百科</a></p>
+<p>XMPP 是一种以 XML 为基础的开放式通讯协议，说白了就是一种通讯协议，当然了通讯协议目前不止 XMPP 一种，还有其他比如：IMPP、PRIM、SIP等，那么我们为什么要选择使用 XMPP 呢？简单介绍一下</p>
+<blockquote>
+<p>开放、自由，目前已经有一些成熟的实现，比如 Google Talk</p>
+<p>它是互联网标准</p>
+<p>基于 XML ，XML 的优点大家都了解，可扩展性好，数据表达友好等</p>
+</blockquote>
+<p>当然它也有劣势的一方面，比如数据负载大，不支持二进制数据等。优劣分析不是我们本次的重点，我们的重点是在对业务的处理上。</p>
+<h2 id="openfire">openfire</h2><p><a href="http://baike.baidu.com/link?url=xpQxkUSOY017FKZV0w21dd7juYnxhR8MjFy-x0veEeNgh_yY4t2-jLcn_VGFQU8xG2ay25BPbsIRtRtFcHU2ja" target="_blank" rel="external">openfire 百度百科</a></p>
+<p>openfire 是一个遵循XMPP协议的服务器实现，也就是说，我们如果要使用 XMPP 协议来实现一个聊天功能，服务器部分已经有实现了，就是 openfire。openfire 的安装也是非常简单的。我们可以直接从<a href="http://www.igniterealtime.org/downloads/index.jsp#openfire" target="_blank" rel="external">官网</a>进行下载</p>
+<p>官网有2种 .zip 和 exe，推荐下载 .exe格式</p>
+<p><a href="http://www.cnblogs.com/maxinliang/p/3582924.html" target="_blank" rel="external">Openfire 的安装和配置</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -113,7 +134,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://zebragg.github.io/2016/03/11/基于XMPP协议的聊天小应用/" data-title="基于XMPP协议的聊天小应用 | zebragg的学习博客" data-tsina="2184410543" class="share clearfix">
+	  <div data-url="https://zebragg.github.io/2016/03/11/基于XMPP协议的聊天小应用/" data-title="基于XMPP协议的聊天小应用(一) | zebragg的学习博客" data-tsina="2184410543" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -126,6 +147,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/03/14/JSPP基本介绍/" title="JSP基本介绍">
+  <strong>上一篇：</strong><br/>
+  <span>
+  JSP基本介绍</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2016/02/29/XML解析/"  title="XML解析">
@@ -139,7 +168,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/03/11/基于XMPP协议的聊天小应用/" data-title="基于XMPP协议的聊天小应用" data-url="https://zebragg.github.io/2016/03/11/基于XMPP协议的聊天小应用/"></div>
+	<div class="ds-thread" data-thread-key="2016/03/11/基于XMPP协议的聊天小应用/" data-title="基于XMPP协议的聊天小应用(一)" data-url="https://zebragg.github.io/2016/03/11/基于XMPP协议的聊天小应用/"></div>
 </section>
 
 
@@ -149,7 +178,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#动机"><span class="toc-number">1.</span> <span class="toc-text">动机</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#动机"><span class="toc-number">1.</span> <span class="toc-text">动机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XMPP？"><span class="toc-number">2.</span> <span class="toc-text">XMPP？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#openfire"><span class="toc-number">3.</span> <span class="toc-text">openfire</span></a></li></ol>
  
   </div>
 
@@ -174,7 +203,7 @@
 		  
 		
 		  
-			<li><a href="/categories/JavaWeb/" title="JavaWeb">JavaWeb<sup>1</sup></a></li>
+			<li><a href="/categories/JavaWeb/" title="JavaWeb">JavaWeb<sup>2</sup></a></li>
 		  
 		
 		  
@@ -207,6 +236,10 @@
 			
 		
 			
+				<li><a href="/tags/JavaWeb/" title="JavaWeb">JavaWeb<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/工作/" title="工作">工作<sup>1</sup></a></li>
 			
 		
@@ -216,10 +249,6 @@
 		
 			
 				<li><a href="/tags/随笔/" title="随笔">随笔<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/JavaWeb/" title="JavaWeb">JavaWeb<sup>1</sup></a></li>
 			
 		
 			

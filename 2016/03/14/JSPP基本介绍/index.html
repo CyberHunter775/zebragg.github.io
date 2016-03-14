@@ -1,0 +1,649 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>JSP基本介绍 | zebragg的学习博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="zebragg">
+    
+
+    
+    <meta name="description" content="JSP 介绍
+JSP：Java Server Pager,是 Sun 开发的用于动态开发Web的技术，JSP 实际就是Servlet，jsp引擎编译之后为一个 Java 文件，查看源码最终继承的父类是 HttpServlet 
+JSP 就像写 HTML 代码，html 只能为用户提供静态数据，而JSP 技术允许在 页面中嵌套 Java 代码，为用户提供动态数据
+
+JSP基本语法
+JSP模板元素
+J">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP基本介绍">
+<meta property="og:url" content="https://zebragg.github.io/2016/03/14/JSPP基本介绍/index.html">
+<meta property="og:site_name" content="zebragg的学习博客">
+<meta property="og:description" content="JSP 介绍
+JSP：Java Server Pager,是 Sun 开发的用于动态开发Web的技术，JSP 实际就是Servlet，jsp引擎编译之后为一个 Java 文件，查看源码最终继承的父类是 HttpServlet 
+JSP 就像写 HTML 代码，html 只能为用户提供静态数据，而JSP 技术允许在 页面中嵌套 Java 代码，为用户提供动态数据
+
+JSP基本语法
+JSP模板元素
+J">
+<meta property="og:updated_time" content="2016-03-14T02:50:44.494Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSP基本介绍">
+<meta name="twitter:description" content="JSP 介绍
+JSP：Java Server Pager,是 Sun 开发的用于动态开发Web的技术，JSP 实际就是Servlet，jsp引擎编译之后为一个 Java 文件，查看源码最终继承的父类是 HttpServlet 
+JSP 就像写 HTML 代码，html 只能为用户提供静态数据，而JSP 技术允许在 页面中嵌套 Java 代码，为用户提供动态数据
+
+JSP基本语法
+JSP模板元素
+J">
+
+    
+    <link rel="alternative" href="/atom.xml" title="zebragg的学习博客" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="zebragg的学习博客">zebragg的学习博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">目录</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/14/JSPP基本介绍/" title="JSP基本介绍" itemprop="url">JSP基本介绍</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="zebragg" target="_blank" itemprop="author">zebragg</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-14T02:25:53.000Z" itemprop="datePublished"> 发表于 2016-03-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JSP_介绍"><span class="toc-number">1.</span> <span class="toc-text">JSP 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSP基本语法"><span class="toc-number">2.</span> <span class="toc-text">JSP基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSP_运行原理以及九大隐式对象"><span class="toc-number">3.</span> <span class="toc-text">JSP 运行原理以及九大隐式对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSP标签"><span class="toc-number">4.</span> <span class="toc-text">JSP标签</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="JSP_介绍">JSP 介绍</h3><ul>
+<li>JSP：Java Server Pager,是 Sun 开发的用于动态开发Web的技术，JSP 实际就是Servlet，jsp引擎编译之后为一个 Java 文件，查看源码最终继承的父类是 HttpServlet </li>
+<li>JSP 就像写 HTML 代码，html 只能为用户提供静态数据，而JSP 技术允许在 页面中嵌套 Java 代码，为用户提供动态数据</li>
+</ul>
+<h3 id="JSP基本语法">JSP基本语法</h3><ul>
+<li>JSP模板元素<ul>
+<li>JSP 页面中的HTML内容叫为 JSP 模板元素</li>
+<li>JSP 模板元素定义了网页了基本框架</li>
+</ul>
+</li>
+<li><p>JSP脚本表达式</p>
+<ul>
+<li>JSP脚本表达式用于将出现数据输出到客户端的语法：&lt;%= 变量或表达式 &amp;&gt;  如当前的时间 ： &lt;%= new java.util.Date() %&gt;</li>
+<li>JSP 引擎在翻译脚本表达式时，会将出现数据转成字符串，然后再相应的位置用 out.println() 将数据输给客户端</li>
+<li>JSP 脚本中只能出现 Java 代码，不能出现其他模板元素，JSP 引擎在翻译 JSP 页面中，会将 JSP 脚本中的 Java 代码原封不动地放到 Servlet 的 _jspService 方法中</li>
+<li>一个 JSP 页面可以有多个脚本片段，多个脚本片段中的代码可以以互相访问</li>
+<li><p>单个脚本中的 Java 代码可以是不完整的，但是，多个脚本片段组合后的结果必须是一个完整的 Java语法 例如：</p>
+<pre><code><span class="xml"><span class="tag">&lt;<span class="title">table</span> <span class="attribute">border</span>=<span class="value">1</span> <span class="attribute">width</span>=<span class="value">200</span>&gt;</span>
+    </span>&lt;%<span class="perl"> 
+        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++){
+         </span>%&gt;<span class="xml">
+         <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+             <span class="tag">&lt;<span class="title">td</span>&gt;</span></span>&lt;%=<span class="perl"> i+<span class="string">""</span> </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+             <span class="tag">&lt;<span class="title">td</span>&gt;</span></span>&lt;%=<span class="perl"> <span class="string">"aa"</span> </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+         <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+         </span>&lt;%<span class="perl">
+        } 
+     </span>%&gt;<span class="xml">
+<span class="tag">&lt;/<span class="title">table</span>&gt;</span></span>
+</code></pre></li>
+</ul>
+</li>
+<li><p>JSP 声明</p>
+<ul>
+<li>JSP 页面中编写的所有代码，默认会翻译到 serlvet 中的 service 方法中，Jsp 声明的 Java代码将会被翻译到 _jspService 方法中来</li>
+<li>JSP 声明可以用来定义 JSP 页面转换成 的Servlet 程序中的 静态代码块、成员变量和方法</li>
+<li>多个 静态代码块、变量和函数可以定义在一个 JSP声明中，也可以分别定义在多个 JSP声明中</li>
+<li>JSP 隐式对象的作用 范围仅限 于 Servlet 的 _jspService 方法，所以在 JSP 声明中不能使用这些隐式对象</li>
+</ul>
+</li>
+<li><p>JSP 指令</p>
+<ul>
+<li>JSP 指令 是为了JSP引擎而设计的，他们并不直接产生任何可见输出，而只是告诉引擎如何处理 JSP 页面中的其余部分，JSP 2.0 规范中定义了三个指令：page、include、tablib</li>
+<li><p>基本语法</p>
+<ul>
+<li>&lt;%@ 指令  属性名 = “值” %&gt;  例如：&lt;%@ page contentType=”text/heml;charset=utf-8”%&gt;</li>
+<li><p>指令中如果有多个属性，可以写在一个指令中，也可以分开写如:</p>
+<p>&lt;%@ page contentType=”text/html;charset=gb2312”%&gt;<br>&lt;%@ page import=”java.util.Date”%&gt;<br>&lt;%@ page contentType=”text/html;charset=gb2312”;import=”java.util.Date”%&gt;</p>
+</li>
+</ul>
+</li>
+<li>page 指令<ul>
+<li>用于定义 JSP页面中的各种属性，无论出现在 JSP 页面的什么位置处，作用的都是整个 JSP 页面，所以一般放在页面的起始位置</li>
+<li>中文乱码问题：Jsp 引擎将 JSP 页面翻译成 Servlet 源文件时也可能导致中文乱码问题，JSP 引擎将 JSP 源文件翻译成 Servlet 源文件默认常用的 ISO08859-1编码，而JSP 开发人员可以采用各种字符集来编码，因此，JSP 引擎将 JSP 源文件翻译成Servlet源文件时，需要进行字符。如果没有说明，JSP 默认作为 ISO8859-1来处理</li>
+<li>page 指令的 contentType 属性说明 JSP 源文件的 字符集编码，page 指令的  pageEncoding 属性说明JSP 源文件的字符集编码</li>
+</ul>
+</li>
+<li>include 指令<ul>
+<li>用于引入其他 JSP 页面，如歌使用 include 指令引入其他 JSP 页面，那么 JSP 引擎会将这2个 JSP 翻译成一个 servlet，所以 include 指令也叫作 静态引入</li>
+<li>&lt;%@ include file=”引入文件的URL”%&gt; file 属性 用于指定被引入文件的 路径。路径如果以 “/” 开头，那么代表当前 web 应用</li>
+<li>注意 被引入的 文件必须遵循 JSP 语法 ； 被引入的文件可以使用任意的 扩展名，即使扩展名 是html，JSP 引擎也会安装处理 jsp 页面的方式处理它里面的 内容；使用 include 指令会涉及到 2 个 JSP 页面，并会把 2个JSP 翻译成 Servlet，所以这 2 个 JSP 页面的指令不能冲突</li>
+</ul>
+</li>
+<li>taglib指令<ul>
+<li>用于在 JSP 页面中导入标签库</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="JSP_运行原理以及九大隐式对象">JSP 运行原理以及九大隐式对象</h3><ul>
+<li>JSP 页面在第一次被访问的时候，WEB容器会把请求交给 JSP 引擎（java 程序） 去处理，JSP 引擎先将 JSP 翻译成一个 servlet，然后按照 Servlet的调用去处理</li>
+<li>由于第一次 JSP 访问时会被翻译成 Servlet，所以第一次访问的时候通常会比较慢，但是第二次访问的时候，如果 JSP 引擎发现 JSP 没有变化，就不再进行翻译了，直接调用</li>
+<li>JSP 引擎在调用 JSP 对应的 Servlet 时，会传递或是 创建 9 个与 web 开发相关的对象 供 Servlet 使用，JSP 技术为开发人员在编写 JSP 页面时获得这些 web 对象的 引用，特意定义了 9 个对应的 对象，开发人员就可以再 JSP 页面中通过这些 变量来 快速获得 9 大对象的 引用</li>
+<li>9大对象分别为  JSP  的隐式对象：request、response、config、application、exception、Session、page、out、pageContext</li>
+</ul>
+<h3 id="JSP标签">JSP标签</h3><ul>
+<li>JSP 标签也叫 JSP Action,用于在 Jsp 页面 中提供业务逻辑功能，避免JSP 页面中直接编写 Java 代码，造成 JSP 页面 难以维护</li>
+<li><jsp:include><ul>
+<li>用于把 另一个 资源的 输出 内容插入进 当前 的 JSP 页面的输出内容中，这种在JSP页面执行时引入的方式叫做 动态引入</li>
+<li>与 include 指令比较：<ul>
+<li>前者 是动态引入的，涉及到 2个 JSP 页面 会被翻译成 2个 servlet，这2个servlet的内容在执行时会进行合并，代码级别的包含，将目标代码直接拷贝进来，这里要注意的是 不要写重复的</li>
+<li>include 指令是静态引入的，涉及到的2个 JSP 页面会被翻译成一个servlet，内容是在源文件级别进行合并，执行目标页面，将结果包含进来</li>
+<li>都会把2个JSP 页面 内容合并输出，所以这2个页面不要出现重复的 HTML 全局架构标签，否则输出给客户端的 内容将会是混乱的 HTML 文档</li>
+</ul>
+</li>
+</ul>
+</jsp:include></li>
+<li><jsp:forword><ul>
+<li>用于把一个请求转发给另外一个资源</li>
+</ul>
+</jsp:forword></li>
+<li><p><jsp:param></jsp:param></p>
+<ul>
+<li>当使用 <jsp:include> 和 <jsp:forword> 标签引入或将请求转发给其他资源的时候，可以使用 <jsp:param> 标签来向这个资源传递参数</jsp:param></jsp:forword></jsp:include></li>
+<li><p>示例：</p>
+<pre><code><span class="xml"><span class="tag">&lt;<span class="title">jsp:forward</span> <span class="attribute">page</span>=<span class="value">"relativeURL | </span></span></span>&lt;%=<span class="ruby">expression</span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span>&gt;</span>
+     <span class="tag">&lt;<span class="title">jsp:param</span> <span class="attribute">name</span>=<span class="value">"parameterName"</span> <span class="attribute">value</span>=<span class="value">"parameterValue|</span></span></span>&lt;%=<span class="ruby"> expression </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> /&gt;</span>
+                    name 用来指定参数名 value 用来指定参数值
+                    可以使用多个<span class="tag">&lt;<span class="title">jsp:param</span>&gt;</span> 标签来传递多个参数
+ <span class="tag">&lt;/<span class="title">jsp:forward</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">jsp:include</span> <span class="attribute">page</span>=<span class="value">"relativeURL | </span></span></span>&lt;%=<span class="ruby">expression</span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">jsp:param</span> <span class="attribute">name</span>=<span class="value">"parameterName"</span> <span class="attribute">value</span>=<span class="value">"parameterValue|</span></span></span>&lt;%=<span class="ruby"> expression </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> /&gt;</span>
+  <span class="tag">&lt;/<span class="title">jsp:include</span>&gt;</span></span>
+</code></pre></li>
+</ul>
+</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/JavaWeb/">JavaWeb</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/JavaWeb/">JavaWeb</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://zebragg.github.io/2016/03/14/JSPP基本介绍/" data-title="JSP基本介绍 | zebragg的学习博客" data-tsina="2184410543" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/03/11/基于XMPP协议的聊天小应用/"  title="基于XMPP协议的聊天小应用(一)">
+ <strong>下一篇：</strong><br/> 
+ <span>基于XMPP协议的聊天小应用(一)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/03/14/JSPP基本介绍/" data-title="JSP基本介绍" data-url="https://zebragg.github.io/2016/03/14/JSPP基本介绍/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JSP_介绍"><span class="toc-number">1.</span> <span class="toc-text">JSP 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSP基本语法"><span class="toc-number">2.</span> <span class="toc-text">JSP基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSP_运行原理以及九大隐式对象"><span class="toc-number">3.</span> <span class="toc-text">JSP 运行原理以及九大隐式对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSP标签"><span class="toc-number">4.</span> <span class="toc-text">JSP标签</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JavaWeb/" title="JavaWeb">JavaWeb<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/XML/" title="XML">XML<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Android/XMPP/" title="XMPP">XMPP<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/工作/" title="工作">工作<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaWeb/" title="JavaWeb">JavaWeb<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工作/" title="工作">工作<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/XMPP/" title="XMPP">XMPP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/随笔/" title="随笔">随笔<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/XML/" title="XML">XML<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gold.avosapps.com/#/" target="_blank" title="稀土掘金">稀土掘金</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2184410543&verifier=e2d6c5e8&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Android 开发 <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2184410543" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/Jxhe" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:xin11058@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="zebragg">zebragg</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"zebragg"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe6d1f421bbc9962127a50488f9ed37d1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
