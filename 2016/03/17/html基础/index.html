@@ -64,7 +64,7 @@ HTML 标记与属性
 HTML 的基本结构
 &amp;lt;html&amp;gt;">
 <meta property="og:image" content="http://7xolhl.com1.z0.glb.clouddn.com/031701.PNG">
-<meta property="og:updated_time" content="2016-03-17T11:04:16.293Z">
+<meta property="og:updated_time" content="2016-03-17T13:23:02.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML基础">
 <meta name="twitter:description" content="HTML 语法
@@ -156,7 +156,7 @@ HTML 的基本结构
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML_语法"><span class="toc-number">1.</span> <span class="toc-text">HTML 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML_的基本结构"><span class="toc-number">2.</span> <span class="toc-text">HTML 的基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML常用标签"><span class="toc-number">3.</span> <span class="toc-text">HTML常用标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超链接的使用"><span class="toc-number">4.</span> <span class="toc-text">超链接的使用</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML_语法"><span class="toc-number">1.</span> <span class="toc-text">HTML 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML_的基本结构"><span class="toc-number">2.</span> <span class="toc-text">HTML 的基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML常用标签"><span class="toc-number">3.</span> <span class="toc-text">HTML常用标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超链接的使用"><span class="toc-number">4.</span> <span class="toc-text">超链接的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表格"><span class="toc-number">5.</span> <span class="toc-text">表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表单设计"><span class="toc-number">6.</span> <span class="toc-text">表单设计</span></a></li></ol>
 		
 		</div>
 		
@@ -230,7 +230,131 @@ HTML 的基本结构
 </ul>
 </li>
 </ul>
-<h3 id="超链接的使用">超链接的使用</h3>  
+<h3 id="超链接的使用">超链接的使用</h3><ul>
+<li><code>&lt;a href= &quot;/&quot; target= &quot;打开方式&quot; name= &quot;&quot;&gt;&lt;/a&gt;</code></li>
+<li><code>href</code> 链接的地址，可以为一个网页，也可以是一个视频、图片、音乐等</li>
+<li><code>target</code> 链接打开的方式<ul>
+<li><code>_blank</code> 在一个新窗口中打开</li>
+<li><code>_seif</code> 默认，在当前窗口中打开</li>
+<li><code>_parent</code> 在父窗口中打开</li>
+<li><code>_top</code> 在顶层窗口中打开</li>
+</ul>
+</li>
+<li><code>name</code> 指定页面的锚点名称</li>
+</ul>
+<h3 id="表格">表格</h3><ul>
+<li><code>&lt;table 属性1 属性2&gt;表格内容&lt;/table&gt;</code><ul>
+<li><code>width</code> 表格宽度    可以使用 % 表示占父元素的百分比</li>
+<li><code>height</code> 表格高度</li>
+<li><code>align</code> 表示表格的位置</li>
+<li><code>border</code> 表示表格的外边框</li>
+<li><code>cellspacing</code> 单元格之间的间距</li>
+<li><code>cellpadding</code> 单元格内容和单元格边框的间距</li>
+<li>frame: 控制表格边框的四条边框<ul>
+<li><code>void</code> 无边框，默认</li>
+<li><code>above</code> 表示仅顶部</li>
+<li><code>below</code> 表示仅底部</li>
+<li><code>hside</code> 顶部+底部</li>
+<li><code>lhs</code> 仅左部</li>
+<li><code>rhs</code> 仅右部</li>
+<li><code>vside</code> 左+右</li>
+<li><code>box</code> 全部</li>
+<li><code>boder</code> 全部</li>
+</ul>
+</li>
+<li><code>rules</code> 控制是否显示以及如何显示单元格之间的分割线<ul>
+<li><code>none</code> 表示无分割线（默认）</li>
+<li><code>all</code> 全部分割线</li>
+<li><code>rows</code> 仅有行分割线</li>
+<li><code>clos</code> 仅有列分割线</li>
+<li><code>groups</code> 仅在行组和列组之间有分割线</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>&lt;caption&gt;</code> 表格标题，位置在 table 标签之后，tr 标签之前<ul>
+<li><code>align</code> top | bottom | left | right 分别为表格标题在表格的位置，上下左右</li>
+</ul>
+</li>
+<li><code>tr</code> 定义表格的一行，<code>&lt;tr&gt;&lt;/tr&gt;</code> 行内可以嵌套 多个 <td> 或 <th> <ul>
+<li><code>bgcolor</code> 背景</li>
+<li><code>align</code> 对齐方式（垂直方向）</li>
+<li><code>valign</code> 设置水平方式的对齐</li>
+</ul>
+</th></td></li>
+<li><code>td</code> 与 <code>th</code> 必须嵌套在 <code>&lt;tr&gt;</code>内</li>
+<li>区别<ul>
+<li><code>th</code> 为表头标记，位于首行或是首列，文字默认会被加粗，<code>td</code>不会</li>
+<li><code>td</code> 是数据标签，为该单元内的具体数据</li>
+</ul>
+</li>
+<li>共同<ul>
+<li>属性标记是一样的</li>
+</ul>
+</li>
+<li>属性<ul>
+<li><code>bgcolor</code> 背景</li>
+<li><code>align</code> 对齐方式</li>
+<li><code>valign</code> 水平对齐</li>
+<li><code>width</code> 宽度</li>
+<li><code>height</code> 高度</li>
+<li><code>rowspan</code> 单元格所占的行数</li>
+<li><code>colspan</code> 单元格所占的列数</li>
+</ul>
+</li>
+</ul>
+<h3 id="表单设计">表单设计</h3><ul>
+<li><code>&lt;from&gt;&lt;/from&gt;</code> 表单提交时的内容就是 <code>&lt;from&gt;</code>表单中的内容</li>
+<li><code>&lt;from action= &quot;介绍表单内容的地址&quot; name= &quot;表单名称&quot; method= &quot;post|get&quot;&gt;&lt;/from&gt;</code></li>
+<li>常用属性<ul>
+<li><code>name</code> 表单名字</li>
+<li><code>method</code> 提交方式，get post<ul>
+<li><code>get</code> 表单内容会附加在 URL 之后，会限制提交内容的长度，</li>
+<li><code>post</code> 将表单中的数据一并包含在表单主体中，一起传送到服务器，数据没有大小限制</li>
+</ul>
+</li>
+<li><code>action</code> 表单数据处理的 URL ，如果为空则为当期的文档的URL地址</li>
+<li><code>enctype</code> 设置编码方式</li>
+<li><code>target</code> 用来指定目标窗口</li>
+</ul>
+</li>
+<li><code>&lt;input&gt;</code> 标记<ul>
+<li>没有结束标记</li>
+<li><code>&lt;input type= &quot;类型&quot; name= &quot;&quot; value= &quot;&quot; ..&gt;</code></li>
+<li><code>type= &quot;text&quot;</code> 表示一个文本输入域</li>
+<li><code>type= &quot;password&quot;</code> 表示一个密码输入</li>
+<li><code>name</code> 定义控件的名称</li>
+<li><code>value</code> 初始化值，</li>
+<li><code>size</code> 控件的长度</li>
+<li><code>maxlength</code> 输入框中允许的最大长度</li>
+<li>按钮<ul>
+<li><code>type= &quot;submit&quot;</code> 为提交按钮</li>
+<li><code>type= &quot;reset&quot;</code> 为重置按钮</li>
+<li><code>type= &quot;button&quot;</code> 为普通的按钮</li>
+</ul>
+</li>
+<li>单选框与复选框<ul>
+<li><code>type= &quot;radio&quot;</code> 为单选按钮</li>
+<li><code>type= &quot;checkbox&quot;</code> 为复选按钮</li>
+<li>可以使用 <code>check</code> 属性来设置默认的选中项</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>&lt;textarea&gt;</code> 多行文本域<ul>
+<li><code>&lt;textarea name,rows,cols value&gt;</code></li>
+<li><code>rows,cols</code> 舒心分别用来指定显示的行数与列数，单位为字符个数</li>
+</ul>
+</li>
+<li><p><code>&lt;select&gt;</code> 菜单下拉域</p>
+<pre><code>`&lt;select name=<span class="string">"address"</span>&gt;
+    &lt;<span class="keyword">option</span> <span class="keyword">value</span>=<span class="string">"四川"</span>&gt;四川&lt;/<span class="keyword">option</span>&gt;
+    &lt;<span class="keyword">option</span> <span class="keyword">value</span>=<span class="string">"四川"</span>&gt;四川&lt;/<span class="keyword">option</span>&gt;F
+    &lt;<span class="keyword">option</span> <span class="keyword">value</span>=<span class="string">"四川"</span>&gt;四川&lt;/<span class="keyword">option</span>&gt;
+&lt;/select&gt;`
+</code></pre></li>
+</ul>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -288,7 +412,7 @@ HTML 的基本结构
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML_语法"><span class="toc-number">1.</span> <span class="toc-text">HTML 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML_的基本结构"><span class="toc-number">2.</span> <span class="toc-text">HTML 的基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML常用标签"><span class="toc-number">3.</span> <span class="toc-text">HTML常用标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超链接的使用"><span class="toc-number">4.</span> <span class="toc-text">超链接的使用</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML_语法"><span class="toc-number">1.</span> <span class="toc-text">HTML 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML_的基本结构"><span class="toc-number">2.</span> <span class="toc-text">HTML 的基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML常用标签"><span class="toc-number">3.</span> <span class="toc-text">HTML常用标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超链接的使用"><span class="toc-number">4.</span> <span class="toc-text">超链接的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表格"><span class="toc-number">5.</span> <span class="toc-text">表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表单设计"><span class="toc-number">6.</span> <span class="toc-text">表单设计</span></a></li></ol>
  
   </div>
 
