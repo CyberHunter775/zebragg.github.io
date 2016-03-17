@@ -4,26 +4,93 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Android加载数据库数据 | zebragg的学习博客</title>
+    <title>HTML基础 | zebragg的学习博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="zebragg">
     
 
     
-    <meta name="description" content="这段时间由于身体状况不是很好，已经有一段时间没有接触代码了，等调理一段时间之后再把这篇文章补上
-动机之前做过一个项目，使用的是本地数据库，其中比较头疼的部分就是对数据的处理，各种情况下的增删改查，如果遇到一些比较复杂的界面，如何高效加载数据确实是一个很麻烦的问题。之后就是各种查资料，终于把这一块弄明白了。回头看自己在学的过程中也是很痛苦的，原因之一就是网上资料比较散（尤其是百度出来的资料），感觉很">
+    <meta name="description" content="HTML 语法
+超文本标记语言
+可以设置文本的样式
+创建列表
+插入图像
+建立表格
+超链接
+
+
+HTML 标记与属性
+文档的保存格式
+.html
+.htm
+.xhtml
+
+
+&amp;lt;标记&amp;gt; 内容&amp;lt;/标记&amp;gt;
+属性：用来控制内容是如何显示,&amp;lt;标记 属性1= “” 属性2= “”&amp;gt;内容&amp;lt;/标记&amp;gt;
+
+
+常见的字符  
+
+HTML 的基本结构
+&amp;lt;html&amp;gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android加载数据库数据">
-<meta property="og:url" content="https://zebragg.github.io/2015/10/02/Android加载数据库数据/index.html">
+<meta property="og:title" content="HTML基础">
+<meta property="og:url" content="https://zebragg.github.io/2016/03/17/html基础/index.html">
 <meta property="og:site_name" content="zebragg的学习博客">
-<meta property="og:description" content="这段时间由于身体状况不是很好，已经有一段时间没有接触代码了，等调理一段时间之后再把这篇文章补上
-动机之前做过一个项目，使用的是本地数据库，其中比较头疼的部分就是对数据的处理，各种情况下的增删改查，如果遇到一些比较复杂的界面，如何高效加载数据确实是一个很麻烦的问题。之后就是各种查资料，终于把这一块弄明白了。回头看自己在学的过程中也是很痛苦的，原因之一就是网上资料比较散（尤其是百度出来的资料），感觉很">
-<meta property="og:updated_time" content="2015-10-05T03:18:33.715Z">
+<meta property="og:description" content="HTML 语法
+超文本标记语言
+可以设置文本的样式
+创建列表
+插入图像
+建立表格
+超链接
+
+
+HTML 标记与属性
+文档的保存格式
+.html
+.htm
+.xhtml
+
+
+&amp;lt;标记&amp;gt; 内容&amp;lt;/标记&amp;gt;
+属性：用来控制内容是如何显示,&amp;lt;标记 属性1= “” 属性2= “”&amp;gt;内容&amp;lt;/标记&amp;gt;
+
+
+常见的字符  
+
+HTML 的基本结构
+&amp;lt;html&amp;gt;">
+<meta property="og:image" content="http://7xolhl.com1.z0.glb.clouddn.com/031701.PNG">
+<meta property="og:updated_time" content="2016-03-17T11:04:16.293Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android加载数据库数据">
-<meta name="twitter:description" content="这段时间由于身体状况不是很好，已经有一段时间没有接触代码了，等调理一段时间之后再把这篇文章补上
-动机之前做过一个项目，使用的是本地数据库，其中比较头疼的部分就是对数据的处理，各种情况下的增删改查，如果遇到一些比较复杂的界面，如何高效加载数据确实是一个很麻烦的问题。之后就是各种查资料，终于把这一块弄明白了。回头看自己在学的过程中也是很痛苦的，原因之一就是网上资料比较散（尤其是百度出来的资料），感觉很">
+<meta name="twitter:title" content="HTML基础">
+<meta name="twitter:description" content="HTML 语法
+超文本标记语言
+可以设置文本的样式
+创建列表
+插入图像
+建立表格
+超链接
+
+
+HTML 标记与属性
+文档的保存格式
+.html
+.htm
+.xhtml
+
+
+&amp;lt;标记&amp;gt; 内容&amp;lt;/标记&amp;gt;
+属性：用来控制内容是如何显示,&amp;lt;标记 属性1= “” 属性2= “”&amp;gt;内容&amp;lt;/标记&amp;gt;
+
+
+常见的字符  
+
+HTML 的基本结构
+&amp;lt;html&amp;gt;">
 
     
     <link rel="alternative" href="/atom.xml" title="zebragg的学习博客" type="application/atom+xml">
@@ -73,14 +140,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/02/Android加载数据库数据/" title="Android加载数据库数据" itemprop="url">Android加载数据库数据</a>
+      <a href="/2016/03/17/html基础/" title="HTML基础" itemprop="url">HTML基础</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="zebragg" target="_blank" itemprop="author">zebragg</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-02T04:07:23.000Z" itemprop="datePublished"> 发表于 2015-10-02</time>
+    <time datetime="2016-03-17T10:30:25.000Z" itemprop="datePublished"> 发表于 2016-03-17</time>
     
   </p>
 </header>
@@ -89,36 +156,94 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#动机"><span class="toc-number">1.</span> <span class="toc-text">动机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用SQL语句"><span class="toc-number">1.1.</span> <span class="toc-text">使用SQL语句</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML_语法"><span class="toc-number">1.</span> <span class="toc-text">HTML 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML_的基本结构"><span class="toc-number">2.</span> <span class="toc-text">HTML 的基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML常用标签"><span class="toc-number">3.</span> <span class="toc-text">HTML常用标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超链接的使用"><span class="toc-number">4.</span> <span class="toc-text">超链接的使用</span></a></li></ol>
 		
 		</div>
 		
-		<hr>
-<p><strong>这段时间由于身体状况不是很好，<br>已经有一段时间没有接触代码了，等调理一段时间之后再把这篇文章补上</strong></p>
-<h2 id="动机">动机</h2><p>之前做过一个项目，使用的是本地数据库，其中比较头疼的部分就是对数据的处理，各种情况下的增删改查，如果遇到一些比较复杂的界面，如何高效加载数据确实是一个很麻烦的问题。之后就是各种查资料，终于把这一块弄明白了。回头看自己在学的过程中也是很痛苦的，原因之一就是网上资料比较散（尤其是百度出来的资料），感觉很有必要总结一下，当然了如果能够帮助到任何人人，那自然是最好不过了。</p>
-<p><strong>本文会以一个记事本的实例主要从以下方面来展开分析</strong></p>
-<ul>
-<li>使用SQL语句直接操作数据库</li>
-<li>使用ContentProvider</li>
-<li>使用Loader机制</li>
-<li>使用常见框架</li>
-<li>同步与异步</li>
+		<h3 id="HTML_语法">HTML 语法</h3><ul>
+<li>超文本标记语言<ul>
+<li>可以设置文本的样式</li>
+<li>创建列表</li>
+<li>插入图像</li>
+<li>建立表格</li>
+<li>超链接</li>
 </ul>
-<h3 id="使用SQL语句">使用SQL语句</h3><p>地方</p>
-  
+</li>
+<li>HTML 标记与属性<ul>
+<li>文档的保存格式<ul>
+<li>.html</li>
+<li>.htm</li>
+<li>.xhtml</li>
+</ul>
+</li>
+<li>&lt;标记&gt; 内容&lt;/标记&gt;</li>
+<li>属性：用来控制内容是如何显示,&lt;标记 属性1= “” 属性2= “”&gt;内容&lt;/标记&gt;</li>
+</ul>
+</li>
+<li>常见的字符  <img src="http://7xolhl.com1.z0.glb.clouddn.com/031701.PNG" alt=""></li>
+</ul>
+<h3 id="HTML_的基本结构">HTML 的基本结构</h3><ul>
+<li><code>&lt;html&gt;&lt;/html&gt;</code> HTML的文档标记</li>
+<li><code>&lt;head&gt;&lt;/head&gt;</code> HTML的头标记，用来包含文件的基本信息，标记内容不会在浏览器中显示</li>
+<li><code>&lt;title&gt;&lt;/title&gt;</code> HTML的文件标题</li>
+<li><code>&lt;body&gt;&lt;/body&gt;</code> HTML的主体标记</li>
+<li><code>&lt;meta&gt;&lt;/meta&gt;</code> 页面的元信息，提供页面的元信息，在 <code>&lt;head&gt;</code>标签内</li>
+</ul>
+<h3 id="HTML常用标签">HTML常用标签</h3><ul>
+<li><code>&lt;br&gt;</code> 换行，HTML中输入的 空格和 回车是没有作用的</li>
+<li><code>&lt;p&gt;</code>    换段落</li>
+<li><code>&lt;center&gt;</code> 居中对齐</li>
+<li><code>&lt;pre&gt;</code> 预格式标记</li>
+<li><p>列表</p>
+<ul>
+<li><code>&lt;li&gt;</code> 列表项目</li>
+<li><code>&lt;ul&gt;</code> 无序列表</li>
+<li><p><code>&lt;ol&gt;</code> 有序列表，可以显示特定的一些顺序 <code>&lt;ol type=&quot;1|a|A|I|i|类型&quot; &gt;&lt;/ol&gt;</code></p>
+</li>
+<li><p><code>&lt;dl&gt;&lt;dt&gt;&lt;dd&gt;</code> 定义型列表，对列表条目进行简短说明<br>  `<dl></dl></p>
+<pre><code><span class="tag">&lt;<span class="title">dt</span>&gt;</span>第一章<span class="tag">&lt;/<span class="title">dt</span>&gt;</span>
+<span class="tag">&lt;<span class="title">dd</span>&gt;</span>第一节<span class="tag">&lt;/<span class="title">dd</span>&gt;</span>
+</code></pre><p>  `</p>
+</li>
+</ul>
+</li>
+<li><code>&lt;hr&gt;</code> 水平线</li>
+<li><code>&lt;div&gt;</code> 层标记，层与层之间可以嵌套</li>
+<li><code>&lt;h1&gt;..&lt;h6&gt;</code> 标题标记，依次对应不同的标题大小</li>
+<li>字体标记<ul>
+<li><code>&lt;b&gt;</code> <b>字体加粗</b></li>
+<li><code>&lt;i&gt;</code> <i>斜字体</i></li>
+<li><code>&lt;sub&gt;</code> 文字<sub>下标</sub></li>
+<li><code>&lt;sup&gt;</code> 文字<sup>上标</sup></li>
+<li><code>&lt;tt&gt;</code> <tt>打印字体</tt></li>
+<li><code>&lt;cite&gt;</code> <cite>引用</cite></li>
+<li><code>&lt;em&gt;</code> <em>字体强调</em></li>
+<li><code>&lt;strong&gt;</code> <strong>表示强调</strong></li>
+<li><code>&lt;small&gt;</code> <small>小型字体</small></li>
+<li><code>&lt;big&gt;</code> <big>大型字体</big></li>
+<li><code>&lt;u&gt;</code> <u>下划线&gt;</u></li>
+</ul>
+</li>
+<li>图像标记 <code>&lt;img&gt;</code><ul>
+<li>为单标签</li>
+<li>格式：<code>&lt;img src=&quot;img path&quot; width=&quot;宽度&quot; height= &quot;高度&quot; border= &quot;边框&quot;&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="超链接的使用">超链接的使用</h3>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Android/">Android</a>
+  <a class="article-category-link" href="/categories/JavaWeb/">JavaWeb</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Android/">Android</a>
+  <span></span> <a href="/tags/JavaWeb/">JavaWeb</a>
   </div>
 
 </div>
@@ -127,7 +252,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://zebragg.github.io/2015/10/02/Android加载数据库数据/" data-title="Android加载数据库数据 | zebragg的学习博客" data-tsina="2184410543" class="share clearfix">
+	  <div data-url="https://zebragg.github.io/2016/03/17/html基础/" data-title="HTML基础 | zebragg的学习博客" data-tsina="2184410543" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -140,20 +265,20 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/02/Hexo搭建个人博客/" title="Hexo搭建个人博客">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Hexo搭建个人博客</span>
+
+<div class="next">
+<a href="/2016/03/14/JSPP基本介绍/"  title="JSP基本介绍">
+ <strong>下一篇：</strong><br/> 
+ <span>JSP基本介绍
+</span>
 </a>
 </div>
-
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/02/Android加载数据库数据/" data-title="Android加载数据库数据" data-url="https://zebragg.github.io/2015/10/02/Android加载数据库数据/"></div>
+	<div class="ds-thread" data-thread-key="2016/03/17/html基础/" data-title="HTML基础" data-url="https://zebragg.github.io/2016/03/17/html基础/"></div>
 </section>
 
 
@@ -163,7 +288,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#动机"><span class="toc-number">1.</span> <span class="toc-text">动机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用SQL语句"><span class="toc-number">1.1.</span> <span class="toc-text">使用SQL语句</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML_语法"><span class="toc-number">1.</span> <span class="toc-text">HTML 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML_的基本结构"><span class="toc-number">2.</span> <span class="toc-text">HTML 的基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML常用标签"><span class="toc-number">3.</span> <span class="toc-text">HTML常用标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超链接的使用"><span class="toc-number">4.</span> <span class="toc-text">超链接的使用</span></a></li></ol>
  
   </div>
 
