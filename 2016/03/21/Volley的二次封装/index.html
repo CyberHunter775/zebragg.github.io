@@ -1,0 +1,1026 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Volley的二次封装 | zebragg的学习博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="zebragg">
+    
+
+    
+    <meta name="description" content="Volley 是一款很不错的网络访问请求框架，在开发过程中，使用 Volley 只需要很少的代码就可以完成对网络的请求，而且性能方面也不需要过多考虑。
+实际开发过程中，Volley 确实能给我们带来很大的便利，但有时候也需要我们适当对 Volley 进行一些简单的封装，已便更好地适应我们的开发需求。
+如果使用原生 Volley，我们的代码是这个样子的
+public class MainActivi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Volley的二次封装">
+<meta property="og:url" content="https://zebragg.github.io/2016/03/21/Volley的二次封装/index.html">
+<meta property="og:site_name" content="zebragg的学习博客">
+<meta property="og:description" content="Volley 是一款很不错的网络访问请求框架，在开发过程中，使用 Volley 只需要很少的代码就可以完成对网络的请求，而且性能方面也不需要过多考虑。
+实际开发过程中，Volley 确实能给我们带来很大的便利，但有时候也需要我们适当对 Volley 进行一些简单的封装，已便更好地适应我们的开发需求。
+如果使用原生 Volley，我们的代码是这个样子的
+public class MainActivi">
+<meta property="og:updated_time" content="2016-03-22T01:14:19.705Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Volley的二次封装">
+<meta name="twitter:description" content="Volley 是一款很不错的网络访问请求框架，在开发过程中，使用 Volley 只需要很少的代码就可以完成对网络的请求，而且性能方面也不需要过多考虑。
+实际开发过程中，Volley 确实能给我们带来很大的便利，但有时候也需要我们适当对 Volley 进行一些简单的封装，已便更好地适应我们的开发需求。
+如果使用原生 Volley，我们的代码是这个样子的
+public class MainActivi">
+
+    
+    <link rel="alternative" href="/atom.xml" title="zebragg的学习博客" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="zebragg的学习博客">zebragg的学习博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">目录</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/21/Volley的二次封装/" title="Volley的二次封装" itemprop="url">Volley的二次封装</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="zebragg" target="_blank" itemprop="author">zebragg</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-21T14:34:52.000Z" itemprop="datePublished"> 发表于 2016-03-21</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>Volley 是一款很不错的网络访问请求框架，在开发过程中，使用 Volley 只需要很少的代码就可以完成对网络的请求，而且性能方面也不需要过多考虑。</p>
+<p>实际开发过程中，Volley 确实能给我们带来很大的便利，但有时候也需要我们适当对 Volley 进行一些简单的封装，已便更好地适应我们的开发需求。</p>
+<p>如果使用原生 Volley，我们的代码是这个样子的</p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span></span>{
+
+<span class="comment">// 请求地址</span>
+<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String GET_SHANGXI_CITY = <span class="string">"http://192.168.0.100:8080/cmn-srv/apiRequest?requestCode=A10002&amp;code=140000"</span>;
+<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String GET_TAIYUAN_DISTRICT = <span class="string">"http://192.168.0.100:8080/cmn-srv/apiRequest?requestCode=A10003&amp;code=140100"</span>;
+
+<span class="keyword">private</span> Button btn1 = <span class="keyword">null</span>;
+<span class="keyword">private</span> Button btn2 = <span class="keyword">null</span>;
+
+<span class="keyword">private</span> RequestQueue queue;
+
+<span class="annotation">@Override</span>
+<span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>{
+    <span class="keyword">super</span>.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    btn1 = (Button)findViewById(R.id.button);
+    btn2 = (Button)findViewById(R.id.button2);
+
+    btn1.setOnClickListener(<span class="keyword">this</span>);
+    btn2.setOnClickListener(<span class="keyword">this</span>);
+
+    queue = Volley.newRequestQueue(<span class="keyword">this</span>);
+
+}
+
+<span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+
+    <span class="keyword">switch</span> (v.getId()){
+        <span class="keyword">case</span> R.id.button:
+            getShangxiAllCity();
+            <span class="keyword">break</span>;
+        <span class="keyword">case</span> R.id.button2:
+            getTaiyuanAllDistrict();
+            <span class="keyword">break</span>;
+        <span class="keyword">default</span>:
+            <span class="keyword">break</span>;
+    }
+}
+
+<span class="comment">/**
+ * 获取山西全部市
+ */</span>
+<span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">getShangxiAllCity</span><span class="params">()</span></span>{
+
+    <span class="comment">// 使用Volley请求数据</span>
+    JsonObjectRequest requestCity = <span class="keyword">new</span> JsonObjectRequest(
+            Request.Method.GET,
+            GET_SHANGXI_CITY,
+            <span class="keyword">null</span>,
+            <span class="keyword">new</span> Response.Listener&lt;JSONObject&gt;() {
+                <span class="annotation">@Override</span>
+                <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(JSONObject jsonObject)</span> </span>{
+
+
+                    Log.d(<span class="string">"TAG"</span>,jsonObject.toString());
+                }
+            },
+            <span class="keyword">new</span> Response.ErrorListener() {
+                <span class="annotation">@Override</span>
+                <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onErrorResponse</span><span class="params">(VolleyError volleyError)</span> </span>{
+                    Log.d(<span class="string">"TAG"</span>,volleyError.toString());
+                }
+            }
+    );
+
+    queue.add(requestCity);
+}
+
+<span class="comment">/**
+ * 获取太原市所有区县
+ */</span>
+<span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">getTaiyuanAllDistrict</span><span class="params">()</span></span>{
+
+    JsonObjectRequest requestDistrict = <span class="keyword">new</span> JsonObjectRequest(
+            Request.Method.GET,
+            GET_TAIYUAN_DISTRICT,
+            <span class="keyword">null</span>,
+            <span class="keyword">new</span> Response.Listener&lt;JSONObject&gt;() {
+                <span class="annotation">@Override</span>
+                <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(JSONObject jsonObject)</span> </span>{
+                    Log.d(<span class="string">"TAG"</span>,jsonObject.toString());
+
+                }
+            },
+            <span class="keyword">new</span> Response.ErrorListener() {
+                <span class="annotation">@Override</span>
+                <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onErrorResponse</span><span class="params">(VolleyError volleyError)</span> </span>{
+                    Log.d(<span class="string">"TAG"</span>,volleyError.toString());
+                }
+            }
+    );
+
+    queue.add(requestDistrict);
+}
+</code></pre><p>}</p>
+<p>服务器返回数据：</p>
+<pre><code>请求市返回数据
+
+{<span class="string">"data"</span>:[{<span class="string">"id"</span>:<span class="string">"140100"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"太原市"</span>,<span class="string">"code"</span>:<span class="string">"140100"</span>},{<span class="string">"id"</span>:<span class="string">"140200"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"大同市"</span>,<span class="string">"code"</span>:<span class="string">"140200"</span>},{<span class="string">"id"</span>:<span class="string">"140300"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"阳泉市"</span>,<span class="string">"code"</span>:<span class="string">"140300"</span>},{<span class="string">"id"</span>:<span class="string">"140400"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"长治市"</span>,<span class="string">"code"</span>:<span class="string">"140400"</span>},{<span class="string">"id"</span>:<span class="string">"140500"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"晋城市"</span>,<span class="string">"code"</span>:<span class="string">"140500"</span>},{<span class="string">"id"</span>:<span class="string">"140600"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"朔州市"</span>,<span class="string">"code"</span>:<span class="string">"140600"</span>},{<span class="string">"id"</span>:<span class="string">"140700"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"晋中市"</span>,<span class="string">"code"</span>:<span class="string">"140700"</span>},{<span class="string">"id"</span>:<span class="string">"140800"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"运城市"</span>,<span class="string">"code"</span>:<span class="string">"140800"</span>},{<span class="string">"id"</span>:<span class="string">"140900"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"忻州市"</span>,<span class="string">"code"</span>:<span class="string">"140900"</span>},{<span class="string">"id"</span>:<span class="string">"141000"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"临汾市"</span>,<span class="string">"code"</span>:<span class="string">"141000"</span>},{<span class="string">"id"</span>:<span class="string">"141100"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"吕梁市"</span>,<span class="string">"code"</span>:<span class="string">"141100"</span>}],<span class="string">"message"</span>:<span class="string">""</span>,<span class="string">"returnCode"</span>:<span class="string">"1"</span>}
+
+请求区返回数据
+
+{<span class="string">"data"</span>:[{<span class="string">"id"</span>:<span class="string">"140101"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"市辖区"</span>,<span class="string">"code"</span>:<span class="string">"140101"</span>},{<span class="string">"id"</span>:<span class="string">"140105"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"小店区"</span>,<span class="string">"code"</span>:<span class="string">"140105"</span>},{<span class="string">"id"</span>:<span class="string">"140106"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"迎泽区"</span>,<span class="string">"code"</span>:<span class="string">"140106"</span>},{<span class="string">"id"</span>:<span class="string">"140107"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"杏花岭区"</span>,<span class="string">"code"</span>:<span class="string">"140107"</span>},{<span class="string">"id"</span>:<span class="string">"140108"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"尖草坪区"</span>,<span class="string">"code"</span>:<span class="string">"140108"</span>},{<span class="string">"id"</span>:<span class="string">"140109"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"万柏林区"</span>,<span class="string">"code"</span>:<span class="string">"140109"</span>},{<span class="string">"id"</span>:<span class="string">"140110"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"晋源区"</span>,<span class="string">"code"</span>:<span class="string">"140110"</span>},{<span class="string">"id"</span>:<span class="string">"140121"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"清徐县"</span>,<span class="string">"code"</span>:<span class="string">"140121"</span>},{<span class="string">"id"</span>:<span class="string">"140122"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"阳曲县"</span>,<span class="string">"code"</span>:<span class="string">"140122"</span>},{<span class="string">"id"</span>:<span class="string">"140123"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"娄烦县"</span>,<span class="string">"code"</span>:<span class="string">"140123"</span>},{<span class="string">"id"</span>:<span class="string">"140181"</span>,<span class="string">"new"</span>:false,<span class="string">"name"</span>:<span class="string">"古交市"</span>,<span class="string">"code"</span>:<span class="string">"140181"</span>}],<span class="string">"message"</span>:<span class="string">""</span>,<span class="string">"returnCode"</span>:<span class="string">"1"</span>}
+</code></pre><p>我们这样写肯定是没有问题的，但是如果需要有多个网络请求时，使用 Volley 原生方式进行网络请求代码就会显得很臃肿，且不利于后期维护，在参考了一些别人写的代码后，对 Volley+fastjson 进行了一次简单的封装，同样还是之前的请求，这是封装之后的代码</p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity2</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span>,<span class="title">VolleyCallBack</span></span>{
+
+<span class="comment">// 请求地址</span>
+<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String GET_SHANGXI_CITY = <span class="string">"http://192.168.0.100:8080/cmn-srv/apiRequest?requestCode=A10002&amp;code=140000"</span>;
+<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String GET_TAIYUAN_DISTRICT = <span class="string">"http://192.168.0.100:8080/cmn-srv/apiRequest?requestCode=A10003&amp;code=140100"</span>;
+
+<span class="comment">// 请求号</span>
+<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String GET_SHANGXI_CITY_CODE = <span class="string">"A10002"</span>;
+<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String GET_TAIYUAN_DISTRICT_CODE = <span class="string">"A10003"</span>;
+
+<span class="keyword">private</span> Button btnGetShangxiCity = <span class="keyword">null</span>;
+<span class="keyword">private</span> Button btnGetTaiyuanDistrict = <span class="keyword">null</span>;
+
+<span class="annotation">@Override</span>
+<span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>{
+    <span class="keyword">super</span>.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    btnGetShangxiCity = (Button)findViewById(R.id.btn_get_shangxi_city);
+    btnGetTaiyuanDistrict = (Button)findViewById(R.id.btn_get_taiyuan_district);
+
+    btnGetShangxiCity.setOnClickListener(<span class="keyword">this</span>);
+    btnGetTaiyuanDistrict.setOnClickListener(<span class="keyword">this</span>);
+
+}
+
+<span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+
+    <span class="keyword">switch</span> (v.getId()){
+        <span class="keyword">case</span> R.id.btn_get_shangxi_city:
+
+            // Volley 封装之后的请求
+            VolleyRequest.<span class="keyword">get</span>(<span class="keyword">this</span>, GET_SHANGXI_CITY_CODE, GET_SHANGXI_CITY, <span class="string">"正在加载"</span>,<span class="keyword">this</span>);
+
+            <span class="keyword">break</span>;
+        <span class="keyword">case</span> R.id.btn_get_taiyuan_district:
+
+            VolleyRequest.<span class="keyword">get</span>(<span class="keyword">this</span>,GET_TAIYUAN_DISTRICT_CODE,GET_TAIYUAN_DISTRICT,<span class="string">"正在加载"</span>,<span class="keyword">this</span>);
+
+            <span class="keyword">break</span>;
+    }
+}
+
+<span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">requestSuccess</span><span class="params">(String requestCode, JSONObject json)</span> </span>{
+
+    <span class="keyword">if</span> (<span class="keyword">null</span> == json){
+        <span class="keyword">return</span>;
+    }
+
+    CommonBean commonBean = JsonUtils.fromJson(json.toString(),CommonBean.class);
+    String returnCode = commonBean.getReturnCode();
+
+    <span class="keyword">if</span> (returnCode.equals(JsonUtils.RETURN_OK)){
+
+        <span class="keyword">switch</span> (requestCode){
+            <span class="keyword">case</span> GET_SHANGXI_CITY_CODE:
+
+                Log.d(<span class="string">"TAG"</span>,commonBean.getData().toString());
+
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> GET_TAIYUAN_DISTRICT_CODE:
+
+                Log.d(<span class="string">"TAG"</span>,commonBean.getData().toString());
+
+                <span class="keyword">break</span>;
+        }
+
+    }<span class="keyword">else</span> <span class="keyword">if</span> (returnCode.equals(JsonUtils.RETURN_ERROR)){
+        Toast.makeText(<span class="keyword">this</span>, commonBean.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+
+}
+
+<span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">requestError</span><span class="params">(String requestCode, VolleyError e)</span> </span>{
+
+    <span class="keyword">switch</span> (requestCode){
+        <span class="keyword">case</span> GET_SHANGXI_CITY_CODE:
+
+            Log.d(<span class="string">"TAG"</span>,<span class="string">"请求市失败"</span>+e.toString());
+
+            <span class="keyword">break</span>;
+        <span class="keyword">case</span> GET_TAIYUAN_DISTRICT_CODE:
+
+            Log.d(<span class="string">"TAG"</span>,<span class="string">"请求区失败"</span>+e.toString());
+
+            <span class="keyword">break</span>;
+    }
+}
+</code></pre><p>}</p>
+<p>封装之后的代码可读性比之前好了很多，而且网络请求也简单了不少，还加入了网络请求进度条的支持，同一个类中如果进行不同的网络请求根据 requestCode 可以很方便地进行分类处理</p>
+<p>下面来具体分析</p>
+<p><code>VolleyRequest</code> 发起一个网络请求</p>
+<pre><code>public class VolleyRequest {
+/<span class="keyword">*</span><span class="keyword">*</span>
+ <span class="keyword">*</span> 不带进度条  get 请求..
+ <span class="keyword">*</span> <span class="comment">@param tag            标签</span>
+ <span class="keyword">*</span> <span class="comment">@param requestCode    请求码</span>
+ <span class="keyword">*</span> <span class="comment">@param url            请求地址</span>
+ <span class="keyword">*</span> <span class="comment">@param listener        回调接口</span>
+ <span class="keyword">*</span>/
+public static  void get(Object tag,String requestCode,String url,VolleyCallBack listener){
+    VolleyManger.get(tag, requestCode, url, listener);
+}
+
+/<span class="keyword">*</span><span class="keyword">*</span>
+ <span class="keyword">*</span> 带 进度条 的 get 请求..
+ <span class="keyword">*</span> <span class="comment">@param tag</span>
+ <span class="keyword">*</span> <span class="comment">@param url</span>
+ <span class="keyword">*</span> <span class="comment">@param requestCode</span>
+ <span class="keyword">*</span> <span class="comment">@param progressTitle    进度条提示</span>
+ <span class="keyword">*</span> <span class="comment">@param listener</span>
+ <span class="keyword">*</span>/
+
+public static void get(Object tag,String requestCode,String url,String progressTitle,VolleyCallBack listener){
+    VolleyManger.get(tag, url, requestCode, progressTitle, listener);
+}
+
+
+/<span class="keyword">*</span><span class="keyword">*</span>
+ <span class="keyword">*</span>  不带 进度条的 Post 请求..
+ <span class="keyword">*</span> <span class="comment">@param tag</span>
+ <span class="keyword">*</span> <span class="comment">@param request</span>
+ <span class="keyword">*</span> <span class="comment">@param url</span>
+ <span class="keyword">*</span> <span class="comment">@param jsonRequest</span>
+ <span class="keyword">*</span> <span class="comment">@param listener</span>
+ <span class="keyword">*</span>/
+public static void post(Object tag,String requestCode,String url,JSONObject jsonRequest,VolleyCallBack listener){
+    VolleyManger.post(tag, requestCode, url, jsonRequest, listener);
+}
+
+/<span class="keyword">*</span><span class="keyword">*</span>
+ <span class="keyword">*</span> 带进度条的 post 请求..
+ <span class="keyword">*</span> <span class="comment">@param tag</span>
+ <span class="keyword">*</span> <span class="comment">@param requestCode</span>
+ <span class="keyword">*</span> <span class="comment">@param url</span>
+ <span class="keyword">*</span> <span class="comment">@param progressTitle</span>
+ <span class="keyword">*</span> <span class="comment">@param jsonRequest</span>
+ <span class="keyword">*</span> <span class="comment">@param listener</span>
+ <span class="keyword">*</span>/
+public static void post(Object tag,String requestCode,String url,String progressTitle,JSONObject jsonRequest,VolleyCallBack listener){
+    VolleyManger.post(tag, requestCode, url, progressTitle, jsonRequest, listener);
+}
+</code></pre><p>}</p>
+<p><code>VolleyManage</code> 对网络请求进行处理</p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VolleyManger</span> </span>{
+
+<span class="comment">// 静态，这里设计成单例模式 应该会好一点.</span>
+<span class="comment">// 设计成单例模式..</span>
+<span class="keyword">public</span> <span class="keyword">static</span> RequestQueue mRequestQueue = <span class="keyword">null</span>;
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RequestQueue  <span class="title">getInstance</span><span class="params">()</span></span>{
+
+    <span class="keyword">if</span> (mRequestQueue==<span class="keyword">null</span>) {
+        mRequestQueue = Volley.newRequestQueue(AppContext.getContext());
+
+    }
+    <span class="keyword">return</span> mRequestQueue;
+}
+
+
+<span class="comment">/**
+ *  返回 JsonObject
+ *  
+ * <span class="doctag">@param</span> tag            上下文
+ * <span class="doctag">@param</span> requestCode    请求号
+ * <span class="doctag">@param</span> url            url
+ * <span class="doctag">@param</span> listener        监听回调..
+ */</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">(Object tag,String requestCode,String url, VolleyCallBack listener)</span> </span>{
+    get(tag, requestCode, url, <span class="keyword">false</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, listener);
+}
+<span class="comment">/**
+ * 返回JsonObject 带进度条 自定义 进度条显示的文字..
+ * <span class="doctag">@param</span> tag            上下文
+ * <span class="doctag">@param</span> url            url
+ * <span class="doctag">@param</span> requestCode        请求号
+ * <span class="doctag">@param</span> progressTitle        进度条文字 ，可以为空，显示默认
+ * <span class="doctag">@param</span> listener            上下文
+ */</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">(Object tag,String url,String requestCode,String progressTitle,VolleyCallBack listener)</span> </span>{
+
+    LoadingFragment dialog = <span class="keyword">new</span> LoadingFragment();
+
+    <span class="keyword">if</span> (tag <span class="keyword">instanceof</span> Activity) {
+        dialog.show(((Activity) tag).getFragmentManager(),<span class="string">"Loading"</span>);
+    }<span class="keyword">else</span> <span class="keyword">if</span>(tag <span class="keyword">instanceof</span> Fragment){
+        <span class="comment">// 在Fragment中 加载</span>
+        dialog.show(((Fragment) tag).getFragmentManager(),<span class="string">"Loading"</span>);
+    }
+
+    dialog.setMsg(progressTitle);
+    get(tag, requestCode, url, <span class="keyword">true</span>, dialog, progressTitle, listener);
+
+}
+
+
+<span class="comment">/**
+ * 
+ * <span class="doctag">@param</span> tag            上下文
+ * <span class="doctag">@param</span> requestCode    请求号
+ * <span class="doctag">@param</span> url            请求地址
+ * <span class="doctag">@param</span> flag            是否有进度条..
+ * <span class="doctag">@param</span> p                进度条
+ * <span class="doctag">@param</span> progressTitle    进度条显示内容
+ * <span class="doctag">@param</span> listener        回调监听..
+ */</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">(Object tag,String requestCode,String url,<span class="keyword">boolean</span> flag,LoadingFragment p,String progressTitle,VolleyCallBack listener)</span></span>{
+
+    <span class="comment">// 还有各种，是否有进度条之类的..</span>
+    <span class="comment">// 如果没有该怎么处理..</span>
+    cancelAll(tag);
+
+    JsonObjectRequest request = <span class="keyword">new</span> JsonObjectRequest(
+            Method.GET,
+            url,
+            <span class="keyword">null</span>,
+            responseListener(listener, requestCode, flag, p), 
+            responseError(listener, requestCode, flag, p));
+
+    addRequest(request, tag);
+
+}
+
+
+<span class="comment">/**
+ * 不带进度条的  post 解析
+ * <span class="doctag">@param</span> tag                上下文
+ * <span class="doctag">@param</span> requestCode        请求码
+ * <span class="doctag">@param</span> url                url
+ * <span class="doctag">@param</span> jsonRequest        发送的 Json 数据
+ * <span class="doctag">@param</span> listener            监听回调..
+ */</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">post</span><span class="params">(Object tag,String requestCode,String url,JSONObject jsonRequest,VolleyCallBack listener)</span></span>{
+    post(tag, requestCode, url, <span class="keyword">false</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, jsonRequest, listener);
+}
+
+
+<span class="comment">/**
+ * 带进度条的 post 解析
+ * <span class="doctag">@param</span> tag                上下文
+ * <span class="doctag">@param</span> requestCode        请求码
+ * <span class="doctag">@param</span> url                地址
+ * <span class="doctag">@param</span> progressTitle        进度条显示
+ * <span class="doctag">@param</span> jsonRequest        发送的 Json 数据
+ * <span class="doctag">@param</span> listener            回调
+ */</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">post</span><span class="params">(Object tag,String requestCode,String url,String progressTitle,JSONObject jsonRequest,VolleyCallBack listener)</span></span>{
+
+    LoadingFragment dialog = <span class="keyword">new</span> LoadingFragment();
+
+    <span class="keyword">if</span> (tag <span class="keyword">instanceof</span> Activity) {
+        dialog.show(((Activity) tag).getFragmentManager(),<span class="string">"Loading"</span>);
+    }<span class="keyword">else</span> <span class="keyword">if</span>(tag <span class="keyword">instanceof</span> Fragment){
+        <span class="comment">// 在Fragment中 这个对话框该如何加载，这个还值得 进一步的验证..</span>
+        dialog.show(((Fragment) tag).getFragmentManager(),<span class="string">"Loading"</span>);
+    }
+
+    dialog.setMsg(progressTitle);
+    post(tag, requestCode, url, <span class="keyword">true</span>, dialog, progressTitle, jsonRequest, listener);
+
+}
+
+
+<span class="comment">/**
+ * 
+ * post 请求..使用 发送  Json 数据到服务器..
+ * <span class="doctag">@param</span> tag            上下文
+ * <span class="doctag">@param</span> requestCode    请求号
+ * <span class="doctag">@param</span> url            请求地址
+ * <span class="doctag">@param</span> flag            是否有进度条..
+ * <span class="doctag">@param</span> p                进度条
+ * <span class="doctag">@param</span> progressTitle    进度条显示内容
+ * <span class="doctag">@param</span> listener        回调监听..
+ */</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">post</span><span class="params">(Object tag,String requestCode,String url,<span class="keyword">boolean</span> flag,LoadingFragment p,String progressTitle,JSONObject jsonRequest,VolleyCallBack listener)</span></span>{
+
+    cancelAll(tag);
+
+    JsonObjectRequest request = <span class="keyword">new</span> JsonObjectRequest(
+            Method.POST,
+            url,
+            jsonRequest,
+            responseListener(listener, requestCode, flag, p), 
+            responseError(listener, requestCode, flag, p));
+
+    addRequest(request, tag);
+}
+
+<span class="comment">/**
+ * 成功消息监听 返回 JSONObject
+ * 
+ * <span class="doctag">@param</span> l String 接口
+ * <span class="doctag">@param</span> flag true 带进度条 flase不带进度条
+ * <span class="doctag">@param</span> p 进度条的对象
+ * <span class="doctag">@return</span>
+ */</span>
+<span class="keyword">protected</span> <span class="keyword">static</span> Response.<span class="function">Listener&lt;JSONObject&gt; <span class="title">responseListener</span><span class="params">(
+        <span class="keyword">final</span> VolleyCallBack l, <span class="keyword">final</span> String requestCode, <span class="keyword">final</span> <span class="keyword">boolean</span> flag,<span class="keyword">final</span> LoadingFragment p)</span> </span>{
+
+    <span class="keyword">return</span> <span class="keyword">new</span> Response.Listener&lt;JSONObject&gt;() {
+        <span class="annotation">@Override</span>
+        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(JSONObject json)</span> </span>{
+
+            Log.d(<span class="string">"Log"</span>,<span class="string">"请求号："</span>+requestCode+<span class="string">"---&gt; "</span>+json.toString());
+            l.requestSuccess(requestCode,json);
+            showDialog(flag, p);
+        }
+
+    };
+}
+
+<span class="comment">/**
+ *  返回错误监听
+ * 
+ * <span class="doctag">@param</span> l String 接口
+ * <span class="doctag">@param</span> flag true 带进度条 flase不带进度条
+ * <span class="doctag">@param</span> p 进度条的对象
+ * <span class="doctag">@return</span>
+ */</span>
+<span class="keyword">protected</span> <span class="keyword">static</span> Response.<span class="function">ErrorListener <span class="title">responseError</span><span class="params">(
+        <span class="keyword">final</span> VolleyCallBack l, <span class="keyword">final</span> String requestCode,<span class="keyword">final</span> <span class="keyword">boolean</span> flag, <span class="keyword">final</span> LoadingFragment p)</span> </span>{
+    <span class="keyword">return</span> <span class="keyword">new</span> Response.ErrorListener() {
+
+        <span class="annotation">@Override</span>
+        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onErrorResponse</span><span class="params">(VolleyError e)</span> </span>{
+
+            Log.d(<span class="string">"Log"</span>, <span class="string">"请求号："</span>+requestCode+<span class="string">"---&gt; "</span>+e.toString());
+
+            l.requestError(requestCode,e);
+            showDialog(flag, p);
+        }
+    };
+}
+
+
+<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showLoadingFragment</span><span class="params">(Context context)</span></span>{
+    LoadingFragment dialog = <span class="keyword">new</span> LoadingFragment();
+}
+
+
+
+<span class="comment">/**
+ * 判断进度条..
+ * 
+ * <span class="doctag">@param</span> flag    是否显示进度条..
+ * <span class="doctag">@param</span> p
+ */</span>
+<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showDialog</span><span class="params">(<span class="keyword">final</span> <span class="keyword">boolean</span> flag, LoadingFragment p)</span> </span>{
+
+    <span class="keyword">if</span> (flag) {
+        <span class="keyword">if</span> (p.getShowsDialog()) {
+            p.dismiss();
+        }
+    }
+}
+
+
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addRequest</span><span class="params">(Request&lt;?&gt; request, Object tag)</span> </span>{
+    <span class="keyword">if</span> (tag != <span class="keyword">null</span>) {
+        request.setTag(tag);
+    }
+    getInstance().add(request);
+}
+<span class="comment">/**
+ * 当主页面调用协议 在结束该页面调用此方法
+ * <span class="doctag">@param</span> tag
+ */</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">cancelAll</span><span class="params">(Object tag)</span> </span>{
+    getInstance().cancelAll(tag);
+}
+</code></pre><p>}</p>
+<p><code>LoadingFrameent</code> 该类继承 <code>DialogFrament</code>,进度条显示样式</p>
+<p><code>VolleyCallBack</code> 回调接口</p>
+<pre><code><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">VolleyCallBack</span>  {
+
+<span class="comment">/** 成功 */</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestSuccess</span>(<span class="params">String requestCode, JSONObject json</span>)</span>;
+
+<span class="comment">/** 错误 */</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestError</span>(<span class="params">String requestCode, VolleyError e</span>)</span>;
+</code></pre><p>}</p>
+<p><code>JsonUtils</code> 和实体类 <code>CommonBean</code> 是根据服务器返回数据进行封装的，再具体开发过程中大家可以根据不同的需求进行封装</p>
+<p>代码已上传，下载地址：<a href="https://github.com/zebragg/VolleyFrame2" target="_blank" rel="external">https://github.com/zebragg/VolleyFrame2</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Android/">Android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android/">Android</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://zebragg.github.io/2016/03/21/Volley的二次封装/" data-title="Volley的二次封装 | zebragg的学习博客" data-tsina="2184410543" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/03/17/html基础/"  title="HTML基础">
+ <strong>下一篇：</strong><br/> 
+ <span>HTML基础
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/03/21/Volley的二次封装/" data-title="Volley的二次封装" data-url="https://zebragg.github.io/2016/03/21/Volley的二次封装/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JavaWeb/" title="JavaWeb">JavaWeb<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/XML/" title="XML">XML<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Android/XMPP/" title="XMPP">XMPP<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/工作/" title="工作">工作<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaWeb/" title="JavaWeb">JavaWeb<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工作/" title="工作">工作<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/XMPP/" title="XMPP">XMPP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/随笔/" title="随笔">随笔<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/XML/" title="XML">XML<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gold.avosapps.com/#/" target="_blank" title="稀土掘金">稀土掘金</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2184410543&verifier=e2d6c5e8&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Android 开发 <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2184410543" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/Jxhe" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:xin11058@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="zebragg">zebragg</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"zebragg"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe6d1f421bbc9962127a50488f9ed37d1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
