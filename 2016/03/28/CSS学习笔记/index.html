@@ -61,6 +61,11 @@
     <link rel="alternative" href="/atom.xml" title="zebragg的学习博客" type="application/atom+xml">
     
     
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
     
     <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
@@ -82,16 +87,17 @@
 					 
 						<li><a href="/">主页</a></li>
 					
-						<li><a href="/archives">目录</a></li>
+						<li><a href="/archives">归档</a></li>
 					
 						<li><a href="/about">关于</a></li>
 					
 					<li>
  					
-						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
-							<label>Search</label>
-						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
-						</form>
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:zebragg.github.io">
+					</form>
 					
 					</li>
 				</ul>
@@ -388,6 +394,13 @@
 <aside class="clearfix">
 
   
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="https://github.com/zebragg" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
 
 
   
@@ -494,12 +507,6 @@
             
           </li>
         
-          <li>
-            
-            	<a href="http://gold.avosapps.com/#/" target="_blank" title="稀土掘金">稀土掘金</a>
-            
-          </li>
-        
     </ul>
 </div>
 
@@ -528,7 +535,7 @@
 	
 	
 	<section class="info">
-		<p> Android 开发 <br/>
+		<p> Hello world! <br/>
 			This is my blog,believe it or not.</p>
 	</section>
 	 
@@ -537,17 +544,17 @@
 		<a href="http://weibo.com/2184410543" target="_blank" class="icon-weibo" title="微博"></a>
 		
 		
+		<a href="https://github.com/https://github.com/zebragg" target="_blank" class="icon-github" title="github"></a>
 		
 		
 		
 		
 		
 		
-		<a href="http://www.zhihu.com/people/Jxhe" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		<a href="http://www.zhihu.com/people/https://www.zhihu.com/people/Jxhe" target="_blank" class="icon-zhihu" title="知乎"></a>
 		
 		
-		
-		<a href="mailto:xin11058@163.com" target="_blank" class="icon-email" title="Email Me"></a>
 		
 	</div>
 			
@@ -737,9 +744,14 @@ $(document).ready(function(){
 
 
 
-<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe6d1f421bbc9962127a50488f9ed37d1' type='text/javascript'%3E%3C/script%3E"));
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?d3686d1891635fb2024e503e759c2bbf";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 
 
